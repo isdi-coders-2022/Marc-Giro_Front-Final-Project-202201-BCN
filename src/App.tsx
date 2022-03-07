@@ -1,5 +1,9 @@
 function App() {
-  return <></>;
+  return (
+    <>
+      <p>Movie API</p>
+    </>
+  );
 }
 
 export default App;
