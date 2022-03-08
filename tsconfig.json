@@ -20,6 +20,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["**/*.ts", "**/*.tsx", "jest.config.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.config.js",
+    "src/components/Navbar.test.js"
+  ],
   "exclude": ["node_modules"]
 }

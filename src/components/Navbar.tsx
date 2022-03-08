@@ -41,7 +41,6 @@ export const Navbar = (): JSX.Element => {
             <FontAwesomeIcon icon={faVideo} />
           </a>
         </li>
-
         <li>
           <a href="/create">
             <FontAwesomeIcon icon={faCirclePlus} />
