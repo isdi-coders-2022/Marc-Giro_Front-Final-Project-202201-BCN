@@ -39,7 +39,7 @@ export const MovieCard = ({
   movie: { image, title, year, type },
 }: MovieCardProps): JSX.Element => {
   let newTitle;
-  if (title.length > 20) {
+  if (title.length > 19) {
     newTitle = title.slice(0, 19) + "...";
   } else {
     newTitle = title;
