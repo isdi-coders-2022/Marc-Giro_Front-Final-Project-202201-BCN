@@ -12,21 +12,21 @@ const NavbarStyle = styled.nav`
   background-color: #335c6760;
   width: 100vw;
   height: 100px;
-  position: fixed;
   display: flex;
+  justify-content: center;
   align-items: center;
 
   & ul {
     display: flex;
     list-style: none;
-    width: 100vw;
+    width: 90vw;
     justify-content: space-around;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
 
     & a {
-      font-size: 30px;
+      font-size: 20px;
       color: black;
     }
   }
