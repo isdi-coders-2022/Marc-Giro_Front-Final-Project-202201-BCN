@@ -4,7 +4,7 @@ import { MovieCard } from "./MovieCard";
 describe("Given a MovieCard component", () => {
   describe("When it is receives a movie", () => {
     test("Then it should display the title of the movie", () => {
-      const movie = { title: "Hello", year: 1999, type: "Movie", image: "" };
+      const movie = { Title: "Hello", Year: "1999", Type: "Movie", Poster: "" };
       render(<MovieCard movie={movie} />);
 
       const title = screen.getByRole("heading", { name: "Hello" });
@@ -15,10 +15,10 @@ describe("Given a MovieCard component", () => {
   describe("When it is receives a movie with a title longer than 20 characters", () => {
     test("Then it should display the first 19 characters of the title followed by ...", () => {
       const movie = {
-        title: "HelloHelloHelloHelloHelloHello",
-        year: 1999,
-        type: "Movie",
-        image: "",
+        Title: "HelloHelloHelloHelloHelloHello",
+        Year: "1999",
+        Type: "Movie",
+        Poster: "",
       };
       render(<MovieCard movie={movie} />);
 

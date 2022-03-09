@@ -36,21 +36,21 @@ interface MovieCardProps {
   movie: Movie;
 }
 export const MovieCard = ({
-  movie: { image, title, year, type },
+  movie: { Poster, Title, Year, Type },
 }: MovieCardProps): JSX.Element => {
   let newTitle;
-  if (title.length > 19) {
-    newTitle = title.slice(0, 19) + "...";
+  if (Title.length > 19) {
+    newTitle = Title.slice(0, 19) + "...";
   } else {
-    newTitle = title;
+    newTitle = Title;
   }
   return (
     <MovieCardStyle>
-      <img src={image} alt={title} />
+      <img src={Poster} alt={Title} />
       <div>
         <h2>{newTitle}</h2>
-        <p>{year}</p>
-        <p>{type}</p>
+        <p>{Year}</p>
+        <p>{Type}</p>
       </div>
     </MovieCardStyle>
   );
