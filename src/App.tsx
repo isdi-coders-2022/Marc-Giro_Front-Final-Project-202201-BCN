@@ -11,10 +11,10 @@ function App() {
       <Navbar />
       <MovieCard
         movie={{
-          type: "series",
-          image: image,
-          title: "canallitacanallitacanallita",
-          year: 1999,
+          Type: "series",
+          Poster: image,
+          Title: "canallitacanallitacanallita",
+          Year: "1999",
         }}
       />
     </>
