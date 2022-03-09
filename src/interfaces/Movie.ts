@@ -3,5 +3,4 @@ export interface Movie {
   Year: string;
   Poster: string;
   Type: string;
-  imdbID?: string;
 }
