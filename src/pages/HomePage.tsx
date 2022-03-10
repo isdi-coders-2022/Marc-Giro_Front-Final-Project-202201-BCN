@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MovieCard } from "../components/MovieCard/MovieCard";
+import FilterButton from "../components/Buttons/FilterButton";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { Navbar } from "../components/Navbar/Navbar";
-import { Movie } from "../interfaces/Movie";
 import { RootState } from "../redux/store";
 import { loadLocalMoviesThunk } from "../redux/thunks/moviesThunk";
 
@@ -16,9 +16,13 @@ export const HomePage = () => {
   return (
     <>
       <Navbar />
-      {moviesList.map((movie: Movie) => (
-        <MovieCard movie={movie} key={movie.Title} />
-      ))}
+      <MoviesList movies={moviesList} />
+      <FilterButton
+        text={"Movies"}
+        actionOnClick={() => {
+          console.log("Movies");
+        }}
+      />
     </>
   );
 };
