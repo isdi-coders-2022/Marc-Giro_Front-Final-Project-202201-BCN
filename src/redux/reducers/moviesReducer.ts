@@ -1,23 +1,18 @@
-import { ActionsCreators } from "../../interfaces/ActionsTypes";
-import { Movie } from "../../interfaces/Movie";
+import { LoadLocalMoviesActionInterface, Movie } from "../../interfaces/Movie";
 import { actionsTypes } from "../actions/actionsTypes";
 
 const moviesReducer = (
-  currentState: Movie[],
-  action: ActionsCreators = {}
+  currentMovies: Movie[] = [],
+  action: LoadLocalMoviesActionInterface = { type: "", movies: [] }
 ): Movie[] => {
-  let newMovies;
+  let newMovies: Movie[];
   switch (action.type) {
     case actionsTypes.loadLocalMovies:
-      if (action as ActionsCreators) {
-        return (newMovies = [...(action as Movie[])]);
-      } else {
-        newMovies = [...currentState];
-      }
+      newMovies = [...action.movies];
       break;
 
     default:
-      newMovies = [...currentState];
+      newMovies = [...currentMovies];
       break;
   }
   return newMovies as Movie[];

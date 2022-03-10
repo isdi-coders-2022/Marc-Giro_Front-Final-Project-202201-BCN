@@ -1,5 +1,3 @@
-import { ActionsTypes } from "../../interfaces/ActionsTypes";
-
-export const actionsTypes: ActionsTypes = {
+export const actionsTypes = {
   loadLocalMovies: "load-local-movies",
 };
