@@ -4,3 +4,11 @@ export interface Movie {
   Poster: string;
   Type: string;
 }
+
+export interface SomeActionInterface {
+  type: string;
+}
+
+export interface LoadLocalMoviesActionInterface extends SomeActionInterface {
+  movies: Movie[];
+}

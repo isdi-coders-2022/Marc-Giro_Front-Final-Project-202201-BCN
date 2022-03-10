@@ -1,5 +1,5 @@
-import { Movie } from "../interfaces/Movie";
-import { loadLocalMovies } from "./actionsCreators";
+import { Movie } from "../../interfaces/Movie";
+import { loadLocalMoviesAction } from "./actionsCreators";
 
 describe("Given a load public movies action", () => {
   describe("When it receives movies", () => {
@@ -19,7 +19,7 @@ describe("Given a load public movies action", () => {
         movies,
       };
 
-      const action = loadLocalMovies(movies);
+      const action = loadLocalMoviesAction(movies);
 
       expect(action).toEqual(expectedAction);
     });
