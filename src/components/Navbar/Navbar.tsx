@@ -7,6 +7,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NavbarStyle = styled.nav`
   background-color: #335c6760;
@@ -37,29 +38,29 @@ export const Navbar = (): JSX.Element => {
     <NavbarStyle>
       <ul>
         <li>
-          <a href="/home">
+          <Link to="/home">
             <FontAwesomeIcon icon={faVideo} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/create">
+          <Link to="/create">
             <FontAwesomeIcon icon={faCirclePlus} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/create">
+          <Link to="/watchlist">
             <FontAwesomeIcon icon={faBookmark} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/create">
+          <Link to="/ratings">
             <FontAwesomeIcon icon={faStar} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/create">
+          <Link to="/register">
             <FontAwesomeIcon icon={faUser} />
-          </a>
+          </Link>
         </li>
       </ul>
     </NavbarStyle>
