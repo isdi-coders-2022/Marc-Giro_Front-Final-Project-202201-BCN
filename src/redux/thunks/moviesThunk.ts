@@ -8,7 +8,6 @@ export const loadLocalMoviesThunk =
   (search: string) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(`${url}movies/?s=${search}`);
-
     const moviesList = await response.json();
 
     dispatch(loadLocalMoviesAction(moviesList));

@@ -15,7 +15,7 @@ const moviesReducer = (
       newMovies = [...currentMovies];
       break;
   }
-  return newMovies as Movie[];
+  return newMovies;
 };
 
 export default moviesReducer;
