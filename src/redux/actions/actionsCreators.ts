@@ -1,7 +1,7 @@
 import { Movie, SomeActionInterface } from "../../interfaces/Movie";
 import { actionsTypes } from "./actionsTypes";
 
-const loadLocalMoviesAction = (
+export const loadLocalMoviesAction = (
   movies: Movie[]
 ): LoadLocalMoviesActionInterface => ({
   type: actionsTypes.loadLocalMovies,
@@ -11,5 +11,3 @@ const loadLocalMoviesAction = (
 interface LoadLocalMoviesActionInterface extends SomeActionInterface {
   movies: Movie[];
 }
-
-export default loadLocalMoviesAction;

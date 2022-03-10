@@ -7,7 +7,6 @@ const url = process.env.REACT_APP_API_URL;
 export const loadLocalMoviesThunk =
   (search: string) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
-    console.log("thunkS");
     const response = await fetch(`${url}movies/?s=${search}`);
     const moviesList = await response.json();
 
