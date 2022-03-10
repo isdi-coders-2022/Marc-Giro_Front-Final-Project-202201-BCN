@@ -1,4 +1,4 @@
-import { Movie } from "../interfaces/Movie";
+import { Movie } from "../../interfaces/Movie";
 import { loadLocalMovies } from "./actionsCreators";
 
 describe("Given a load public movies action", () => {
