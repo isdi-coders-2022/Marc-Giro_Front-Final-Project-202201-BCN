@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import FilterButton from "./FilterButton";
+import PaginationButton from "./PaginationButton";
 
-describe("Given a FilterButton component", () => {
+describe("Given a PaginationButton component", () => {
   describe("When it receives an action and the button is clicked", () => {
     test("Then it should call the action", () => {
       const action = jest.fn();
 
-      render(<FilterButton actionOnClick={action} text="text" />);
+      render(<PaginationButton actionOnClick={action} text="text" />);
 
       userEvent.click(screen.getByRole("button"));
 

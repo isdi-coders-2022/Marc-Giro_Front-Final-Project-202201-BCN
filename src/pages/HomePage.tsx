@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import FilterButton from "../components/Buttons/FilterButton";
+import PaginationButton from "../components/Buttons/PaginationButton";
 import MoviesList from "../components/MoviesList/MoviesList";
 import { Navbar } from "../components/Navbar/Navbar";
 import { RootState } from "../redux/store";
@@ -17,8 +17,8 @@ export const HomePage = () => {
     <>
       <Navbar />
       <MoviesList movies={moviesList} />
-      <FilterButton
-        text={"Movies"}
+      <PaginationButton
+        text={"Previous"}
         actionOnClick={() => {
           console.log("Movies");
         }}
