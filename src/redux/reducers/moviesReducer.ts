@@ -5,6 +5,8 @@ const moviesReducer = (
   currentMovies: Movie[] = [],
   action: LoadLocalMoviesActionInterface = { type: "", movies: [] }
 ): Movie[] => {
+  console.log("reducer");
+  console.log(action.movies);
   let newMovies: Movie[];
   switch (action.type) {
     case actionsTypes.loadLocalMovies:
@@ -15,7 +17,7 @@ const moviesReducer = (
       newMovies = [...currentMovies];
       break;
   }
-  return newMovies as Movie[];
+  return newMovies;
 };
 
 export default moviesReducer;

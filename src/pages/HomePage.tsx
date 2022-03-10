@@ -10,8 +10,9 @@ export const HomePage = () => {
   const dispatch = useDispatch();
   const moviesList = useSelector((state: RootState) => state.moviesReducer);
   console.log(moviesList);
-
+  console.log("useeffectprevi");
   useEffect(() => {
+    console.log("useeffectdins");
     dispatch(loadLocalMoviesThunk("Hola"));
   }, [dispatch]);
 
