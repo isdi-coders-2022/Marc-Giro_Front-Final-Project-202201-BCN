@@ -49,7 +49,7 @@ const MoviesList = ({ movies }: MoviesListProps): JSX.Element => {
           </h3>
           <ul>
             {movies.map((movie: Movie) => (
-              <MovieCard movie={movie} key={movie.Title} />
+              <MovieCard movie={movie} key={movie._id} />
             ))}
           </ul>
         </section>

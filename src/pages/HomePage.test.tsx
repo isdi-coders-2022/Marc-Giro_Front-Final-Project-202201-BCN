@@ -15,9 +15,9 @@ describe("Given a HomePage component", () => {
         </BrowserRouter>
       );
 
-      const links = screen.getAllByRole("link");
+      const title = screen.getByRole("heading");
 
-      expect(links).toHaveLength(5);
+      expect(title).toBeInTheDocument();
     });
   });
 });

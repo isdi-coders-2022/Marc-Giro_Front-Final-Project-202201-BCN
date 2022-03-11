@@ -9,6 +9,7 @@ describe("Given a MovieCard component", () => {
         Year: "1999",
         Type: "Movie",
         Poster: "",
+        _id: "6228796b92d232f647b99044",
       };
       render(<MovieCard movie={movie} />);
 
@@ -24,6 +25,7 @@ describe("Given a MovieCard component", () => {
         Year: "1999",
         Type: "Movie",
         Poster: "",
+        _id: "6228796b92d232f647b99044",
       };
       render(<MovieCard movie={movie} />);
 
