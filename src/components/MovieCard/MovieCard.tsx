@@ -46,6 +46,11 @@ const MovieCardStyle = styled.li`
         height: 20px;
         width: 20px;
         margin-left: 20px;
+        cursor: pointer;
+      }
+
+      & i :hover {
+        color: hotpink;
       }
     }
   }

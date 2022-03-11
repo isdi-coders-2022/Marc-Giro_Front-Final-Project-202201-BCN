@@ -8,7 +8,7 @@ const MovieCardStyle = styled.div`
 
   & section {
     width: 90vw;
-    margin-top: 5%;
+    margin-top: 20px;
     display: flex;
     justify-content: right;
     flex-direction: column;
@@ -19,6 +19,9 @@ const MovieCardStyle = styled.div`
       margin-left: 0;
       margin-top: 13px;
       margin-bottom: 10px;
+      @media (min-width: 810px) {
+        margin-bottom: 20px;
+      }
     }
 
     & ul {
@@ -27,10 +30,9 @@ const MovieCardStyle = styled.div`
       align-items: center;
       padding-left: 0;
 
-      @media (min-width: 800px) {
+      @media (min-width: 810px) {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
       }
     }
   }
