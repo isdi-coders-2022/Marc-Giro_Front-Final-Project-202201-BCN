@@ -8,6 +8,11 @@ export const loadLocalMoviesAction = (
   movies,
 });
 
+export const deleteLocalMovieAction = (movieId: string) => ({
+  type: actionsTypes.deleteLocalMovie,
+  movieId,
+});
+
 interface LoadLocalMoviesActionInterface extends SomeActionInterface {
   movies: Movie[];
 }
