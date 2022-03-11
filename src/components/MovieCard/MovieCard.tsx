@@ -6,6 +6,7 @@ const MovieCardStyle = styled.li`
   height: 120px;
   width: 314px;
   display: flex;
+  margin-bottom: 10%;
   & div {
     display: flex;
     flex-direction: column;

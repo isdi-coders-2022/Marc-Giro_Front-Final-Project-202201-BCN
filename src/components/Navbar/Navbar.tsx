@@ -21,13 +21,13 @@ const NavbarStyle = styled.nav`
     display: flex;
     list-style: none;
     width: 90vw;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
 
     & a {
-      font-size: 20px;
+      font-size: 25px;
       color: black;
     }
   }
