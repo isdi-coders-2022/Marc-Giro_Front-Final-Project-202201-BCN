@@ -3,7 +3,7 @@ import { actionsTypes } from "../actions/actionsTypes";
 import moviesReducer from "./moviesReducer";
 
 describe("Given an moviesReducer function", () => {
-  describe("When it is called with an empty state and a loadLocalMovies action with movies", () => {
+  describe("When it is called with a loadLocalMovies action with movies", () => {
     test("then it should return the movies as the new state", () => {
       const currentState: Movie[] = [];
       const movies = [
@@ -31,6 +31,46 @@ describe("Given an moviesReducer function", () => {
       expect(newState).toEqual(movies);
     });
   });
+
+  describe("When it is called with a deleteLocalMovie action with a movieId", () => {
+    test("then it should return the current movies withoud the movie corresponding with the movieId", () => {
+      const movieId = "6228796b92d232f647b99044";
+      const currentState: Movie[] = [
+        {
+          Title: "Hola",
+          Year: "1999",
+          Poster: "foto",
+          Type: "movie",
+          _id: "6228796b92d232f647b99044",
+        },
+        {
+          Title: "Adeu",
+          Year: "1990",
+          Poster: "foto2",
+          Type: "series",
+          _id: "6228796b92d232f647b99045",
+        },
+      ];
+      const filteredMovies: Movie[] = [
+        {
+          Title: "Adeu",
+          Year: "1990",
+          Poster: "foto2",
+          Type: "series",
+          _id: "6228796b92d232f647b99045",
+        },
+      ];
+      const action = {
+        type: actionsTypes.deleteLocalMovie,
+        movieId,
+      };
+
+      const newState = moviesReducer(currentState, action);
+
+      expect(newState).toEqual(filteredMovies);
+    });
+  });
+
   describe("When it's called with an nonexistent action", () => {
     test("Then it should return a new state with the current state (initial state)", () => {
       const currentMovies: Movie[] = [
