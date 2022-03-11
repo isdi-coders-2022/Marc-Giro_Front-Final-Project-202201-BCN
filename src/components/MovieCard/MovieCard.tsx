@@ -9,6 +9,9 @@ const MovieCardStyle = styled.li`
   width: 314px;
   display: flex;
   margin-bottom: 10%;
+  @media (min-width: 800px) {
+    margin-right: 50px;
+  }
   & div {
     display: flex;
     flex-direction: column;
