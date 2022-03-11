@@ -12,12 +12,14 @@ describe("Given an moviesReducer function", () => {
           Year: "1999",
           Poster: "foto",
           Type: "movie",
+          _id: "6228796b92d232f647b99044",
         },
         {
           Title: "Adeu",
           Year: "1990",
           Poster: "foto2",
           Type: "series",
+          _id: "6228796b92d232f647b99045",
         },
       ];
       const action = {
@@ -37,12 +39,14 @@ describe("Given an moviesReducer function", () => {
           Year: "1999",
           Poster: "foto",
           Type: "movie",
+          _id: "6228796b92d232f647b99040",
         },
         {
           Title: "Adeu",
           Year: "1990",
           Poster: "foto2",
           Type: "series",
+          _id: "6228796b92d232f647b99041",
         },
       ];
 

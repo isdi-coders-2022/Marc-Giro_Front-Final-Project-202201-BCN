@@ -3,6 +3,7 @@ export interface Movie {
   Year: string;
   Poster: string;
   Type: string;
+  _id?: string;
 }
 
 export interface SomeActionInterface {

@@ -10,6 +10,7 @@ describe("Given a MoviesList component", () => {
           Year: "1999",
           Type: "Movie",
           Poster: "",
+          _id: "6228796b92d232f647b99044",
         },
       ];
       render(<MoviesList movies={movies} />);

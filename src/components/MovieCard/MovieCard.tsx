@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Movie } from "../../interfaces/Movie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const MovieCardStyle = styled.li`
   background-color: #83c5be30;
@@ -16,16 +18,32 @@ const MovieCardStyle = styled.li`
       font-size: 22px;
       font-weight: bolder;
       margin-left: 12px;
-      margin-top: 13px;
-      margin-bottom: 10px;
+      margin-top: 7px;
+      margin-bottom: 8px;
     }
 
     & p {
       font-size: 15px;
       margin-left: 12px;
-      margin-top: 2px;
-      margin-bottom: 10px;
+      margin-top: 1px;
+      margin-bottom: 5px;
       font-weight: bold;
+    }
+    & .iconsLine {
+      width: 215px;
+      margin-top: 5px;
+      margin-left: 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+
+      & i {
+        display: flex;
+        justify-content: center;
+        height: 20px;
+        width: 20px;
+        margin-left: 20px;
+      }
     }
   }
 
@@ -52,6 +70,17 @@ export const MovieCard = ({
         <h2>{newTitle}</h2>
         <p>{Year}</p>
         <p>{Type}</p>
+        <div className="iconsLine">
+          <i onClick={() => {}}>
+            <FontAwesomeIcon icon={faStar} />
+          </i>
+          <i onClick={() => {}}>
+            <FontAwesomeIcon icon={faBookmark} />
+          </i>
+          <i onClick={() => {}}>
+            <FontAwesomeIcon icon={faTrash} />
+          </i>
+        </div>
       </div>
     </MovieCardStyle>
   );
