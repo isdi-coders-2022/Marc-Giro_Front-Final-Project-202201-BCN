@@ -25,7 +25,8 @@
     "**/*.tsx",
     "jest.config.js",
     "src/components/Navbar.test.js",
-    "src/components/MoviesList/MoviesList.test.js"
+    "src/components/MoviesList/MoviesList.test.js",
+    "src/redux/thunks/moviesThunk.test.js"
   ],
   "exclude": ["node_modules"]
 }
