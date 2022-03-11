@@ -1,4 +1,8 @@
-import { Movie, SomeActionInterface } from "../../interfaces/Movie";
+import {
+  DeleteLocalMovieActionInterface,
+  Movie,
+  LoadLocalMoviesActionInterface,
+} from "../../interfaces/Movie";
 import { actionsTypes } from "./actionsTypes";
 
 export const loadLocalMoviesAction = (
@@ -8,11 +12,9 @@ export const loadLocalMoviesAction = (
   movies,
 });
 
-export const deleteLocalMovieAction = (movieId: string) => ({
+export const deleteLocalMovieAction = (
+  movieId: string
+): DeleteLocalMovieActionInterface => ({
   type: actionsTypes.deleteLocalMovie,
   movieId,
 });
-
-interface LoadLocalMoviesActionInterface extends SomeActionInterface {
-  movies: Movie[];
-}
