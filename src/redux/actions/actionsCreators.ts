@@ -8,7 +8,7 @@ export const loadLocalMoviesAction = (
   movies,
 });
 
-export const deleteLocalMovie = (movieId: string) => ({
+export const deleteLocalMovieAction = (movieId: string) => ({
   type: actionsTypes.deleteLocalMovie,
   movieId,
 });
