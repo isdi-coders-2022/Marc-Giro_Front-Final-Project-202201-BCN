@@ -5,12 +5,14 @@ import styled from "styled-components";
 const MovieCardStyle = styled.div`
   display: flex;
   justify-content: center;
+
   & section {
     width: 90vw;
     margin-top: 5%;
     display: flex;
     justify-content: right;
     flex-direction: column;
+
     & h3 {
       font-size: 22px;
       font-weight: bolder;
@@ -18,11 +20,18 @@ const MovieCardStyle = styled.div`
       margin-top: 13px;
       margin-bottom: 10px;
     }
+
     & ul {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-left: 0;
+
+      @media (min-width: 800px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
   }
 `;
