@@ -25,4 +25,32 @@ describe("Given a MoviesList component", () => {
       expect(imageAlt).toBeInTheDocument();
     });
   });
+  describe("When it receives an array of multiple movies", () => {
+    test("Then it should display the movies title", () => {
+      const movies = [
+        {
+          Title: "Hello",
+          Year: "1999",
+          Type: "Movie",
+          Poster: "",
+          _id: "6228796b92d232f647b99044",
+        },
+        {
+          Title: "Bye",
+          Year: "1999",
+          Type: "Movie",
+          Poster: "",
+          _id: "6228796b92d232f647b99045",
+        },
+      ];
+      render(
+        <Provider store={store}>
+          <MoviesList movies={movies} />
+        </Provider>
+      );
+
+      const imageAlt = screen.getByRole("img", { name: "Hello" });
+      expect(imageAlt).toBeInTheDocument();
+    });
+  });
 });
