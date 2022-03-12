@@ -74,7 +74,7 @@ export const MovieCard = ({
 }: MovieCardProps): JSX.Element => {
   const dispatch = useDispatch();
 
-  const deleteMovie = (_id: any): void => {
+  const deleteMovie = (_id: any) => {
     dispatch(deleteLocalMovieThunk(_id));
   };
 
