@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Movie } from "../../interfaces/Movie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { deleteLocalMovieThunk } from "../../redux/thunks/moviesThunk";
 
 const MovieCardStyle = styled.li`
   background-color: #83c5be30;
@@ -62,9 +64,16 @@ const MovieCardStyle = styled.li`
 interface MovieCardProps {
   movie: Movie;
 }
+
 export const MovieCard = ({
-  movie: { Poster, Title, Year, Type },
+  movie: { Poster, Title, Year, Type, _id },
 }: MovieCardProps): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const deleteMovie = (_id: any): void => {
+    dispatch(deleteLocalMovieThunk(_id));
+  };
+
   let newTitle;
   if (Title.length > 19) {
     newTitle = Title.slice(0, 19) + "...";
@@ -85,7 +94,11 @@ export const MovieCard = ({
           <i onClick={() => {}}>
             <FontAwesomeIcon icon={faBookmark} />
           </i>
-          <i onClick={() => {}}>
+          <i
+            onClick={() => {
+              deleteMovie(_id);
+            }}
+          >
             <FontAwesomeIcon icon={faTrash} />
           </i>
         </div>
