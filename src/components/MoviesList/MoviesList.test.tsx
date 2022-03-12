@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 import MoviesList from "./MoviesList";
 
 describe("Given a MoviesList component", () => {
@@ -13,7 +15,11 @@ describe("Given a MoviesList component", () => {
           _id: "6228796b92d232f647b99044",
         },
       ];
-      render(<MoviesList movies={movies} />);
+      render(
+        <Provider store={store}>
+          <MoviesList movies={movies} />
+        </Provider>
+      );
 
       const imageAlt = screen.getByRole("img", { name: "Hello" });
       expect(imageAlt).toBeInTheDocument();
