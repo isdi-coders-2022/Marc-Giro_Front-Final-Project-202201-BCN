@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { deleteLocalMovieThunk } from "../../redux/thunks/moviesThunk";
-import React, { MouseEventHandler } from "react";
 
 const MovieCardStyle = styled.li`
   background-color: #83c5be30;
