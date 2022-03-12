@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { Movie } from "../../interfaces/Movie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { deleteLocalMovieThunk } from "../../redux/thunks/moviesThunk";
+import DeleteIcon from "../Icons/DeleteIcon";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MovieCardStyle = styled.li`
   background-color: #83c5be30;
@@ -65,6 +68,7 @@ interface MovieCardProps {
   movie: Movie;
 }
 
+toast.configure();
 export const MovieCard = ({
   movie: { Poster, Title, Year, Type, _id },
 }: MovieCardProps): JSX.Element => {
@@ -88,18 +92,26 @@ export const MovieCard = ({
         <p>{Year}</p>
         <p>{Type}</p>
         <div className="iconsLine">
-          <i onClick={() => {}}>
+          <i role="button" onClick={() => {}}>
             <FontAwesomeIcon icon={faStar} />
           </i>
-          <i onClick={() => {}}>
+
+          <i role="button" onClick={() => {}}>
             <FontAwesomeIcon icon={faBookmark} />
           </i>
-          <i
-            onClick={() => {
-              deleteMovie(_id);
-            }}
-          >
-            <FontAwesomeIcon icon={faTrash} />
+
+          <i>
+            <DeleteIcon
+              onClick={() => {
+                deleteMovie(_id);
+                toast.success("Movie deleted", {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                  autoClose: 500,
+                  theme: "colored",
+                  hideProgressBar: true,
+                });
+              }}
+            />
           </i>
         </div>
       </div>
