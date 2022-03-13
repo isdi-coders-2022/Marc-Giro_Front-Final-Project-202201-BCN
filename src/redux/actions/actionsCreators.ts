@@ -3,7 +3,6 @@ import {
   Movie,
   LoadLocalMoviesActionInterface,
   AddLocalMovieActionInterface,
-  MovieDetails,
 } from "../../interfaces/Movie";
 import { actionsTypes } from "./actionsTypes";
 
