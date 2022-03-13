@@ -6,15 +6,6 @@ export interface Movie {
   _id?: string;
 }
 
-export interface MovieDetails extends Movie {
-  Runtime: number;
-  Director: string;
-  Writer: string;
-  Actors: string;
-  Plot: string;
-  Genre: string;
-}
-
 export interface SomeActionInterface {
   type: string;
 }
