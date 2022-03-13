@@ -4,7 +4,7 @@ import MoviesList from "../components/MoviesList/MoviesList";
 import { RootState } from "../redux/store";
 import { loadLocalMoviesThunk } from "../redux/thunks/moviesThunk";
 
-export const HomePage = () => {
+export const HomePage = (): JSX.Element => {
   const dispatch = useDispatch();
   const moviesList = useSelector((state: RootState) => state.moviesReducer);
   useEffect(() => {

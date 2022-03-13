@@ -2,6 +2,8 @@ import {
   DeleteLocalMovieActionInterface,
   Movie,
   LoadLocalMoviesActionInterface,
+  AddLocalMovieActionInterface,
+  MovieDetails,
 } from "../../interfaces/Movie";
 import { actionsTypes } from "./actionsTypes";
 
@@ -17,4 +19,11 @@ export const deleteLocalMovieAction = (
 ): DeleteLocalMovieActionInterface => ({
   type: actionsTypes.deleteLocalMovie,
   movieId,
+});
+
+export const addLocalMovieAction = (
+  movie: MovieDetails
+): AddLocalMovieActionInterface => ({
+  type: actionsTypes.addLocalMovie,
+  movie,
 });
