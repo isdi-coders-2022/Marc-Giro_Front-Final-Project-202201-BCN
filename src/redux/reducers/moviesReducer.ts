@@ -3,6 +3,7 @@ import {
   DeleteLocalMovieActionInterface,
   Movie,
   SomeActionInterface,
+  AddLocalMovieActionInterface,
 } from "../../interfaces/Movie";
 import { actionsTypes } from "../actions/actionsTypes";
 
@@ -11,7 +12,8 @@ const moviesReducer = (
   action:
     | SomeActionInterface
     | LoadLocalMoviesActionInterface
-    | DeleteLocalMovieActionInterface = {
+    | DeleteLocalMovieActionInterface
+    | AddLocalMovieActionInterface = {
     type: "",
     movies: [],
   }
@@ -26,6 +28,15 @@ const moviesReducer = (
         (movie) =>
           movie._id !== (action as DeleteLocalMovieActionInterface).movieId
       );
+      break;
+
+    case actionsTypes.addLocalMovie:
+      console.log((action as AddLocalMovieActionInterface).movie);
+      newMovies = [
+        ...currentMovies,
+        (action as AddLocalMovieActionInterface).movie,
+      ];
+      console.log(newMovies);
       break;
 
     default:

@@ -3,7 +3,6 @@ import {
   Movie,
   LoadLocalMoviesActionInterface,
   AddLocalMovieActionInterface,
-  MovieDetails,
 } from "../../interfaces/Movie";
 import { actionsTypes } from "./actionsTypes";
 
@@ -22,7 +21,7 @@ export const deleteLocalMovieAction = (
 });
 
 export const addLocalMovieAction = (
-  movie: MovieDetails
+  movie: Movie
 ): AddLocalMovieActionInterface => ({
   type: actionsTypes.addLocalMovie,
   movie,

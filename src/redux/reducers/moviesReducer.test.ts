@@ -26,6 +26,7 @@ describe("Given an moviesReducer function", () => {
         type: actionsTypes.loadLocalMovies,
         movies,
       };
+
       const newState = moviesReducer(currentState, action);
 
       expect(newState).toEqual(movies);
@@ -71,7 +72,7 @@ describe("Given an moviesReducer function", () => {
     });
   });
 
-  describe("When it's called with an nonexistent action", () => {
+  describe("When it is called with a deleteLocalMovie action with a nonexistent action", () => {
     test("Then it should return a new state with the current state (initial state)", () => {
       const currentMovies: Movie[] = [
         {
@@ -89,7 +90,6 @@ describe("Given an moviesReducer function", () => {
           _id: "6228796b92d232f647b99041",
         },
       ];
-
       const action = {
         type: "none",
         movies: currentMovies,
@@ -98,6 +98,65 @@ describe("Given an moviesReducer function", () => {
       const newState = moviesReducer(currentMovies, action);
 
       expect(newState).toEqual(currentMovies);
+    });
+  });
+
+  describe("When it is called with an addLocalMovie action with a movie", () => {
+    test("Then it should return the current movies plus the new movie", () => {
+      const newMovie: Movie = {
+        Title: "Bon dia",
+        Year: "1999",
+        Poster: "foto",
+        Type: "movie",
+        _id: "6228796b92d232f647b99042",
+      };
+      const currentMovies: Movie[] = [
+        {
+          Title: "Hola",
+          Year: "1999",
+          Poster: "foto",
+          Type: "movie",
+          _id: "6228796b92d232f647b99040",
+        },
+        {
+          Title: "Adeu",
+          Year: "1990",
+          Poster: "foto2",
+          Type: "series",
+          _id: "6228796b92d232f647b99041",
+        },
+      ];
+      const allMovies: Movie[] = [
+        {
+          Title: "Hola",
+          Year: "1999",
+          Poster: "foto",
+          Type: "movie",
+          _id: "6228796b92d232f647b99040",
+        },
+        {
+          Title: "Adeu",
+          Year: "1990",
+          Poster: "foto2",
+          Type: "series",
+          _id: "6228796b92d232f647b99041",
+        },
+        {
+          Title: "Bon dia",
+          Year: "1999",
+          Poster: "foto",
+          Type: "movie",
+          _id: "6228796b92d232f647b99042",
+        },
+      ];
+      const action = {
+        type: "add-local-movie",
+        movie: newMovie,
+      };
+
+      const newState = moviesReducer(currentMovies, action);
+
+      expect(newState).toEqual(allMovies);
     });
   });
 });

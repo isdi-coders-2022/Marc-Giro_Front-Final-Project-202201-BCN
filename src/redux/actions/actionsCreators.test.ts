@@ -1,4 +1,4 @@
-import { Movie, MovieDetails } from "../../interfaces/Movie";
+import { Movie } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
   deleteLocalMovieAction,
@@ -48,18 +48,12 @@ describe("Given a delete local movie action", () => {
 describe("Given an add local movie action", () => {
   describe("When it receives a movie", () => {
     test("Then it should return the action and the movie", () => {
-      const movie: MovieDetails = {
+      const movie: Movie = {
         Title: "The Leftovers",
         Year: "2014–2017",
         Type: "series",
         Poster:
           "https://m.media-amazon.com/images/M/MV5BNTE3MDc1MjY4NV5BMl5BanBnXkFtZTgwMDg4MjQ4MTE@._V1_SX300.jpg",
-        Actors: "Main actors",
-        Director: "Main director",
-        Genre: "drama",
-        Plot: "Weird show",
-        Runtime: 200,
-        Writer: "Damon Lindelof",
       };
       const expectedAction = {
         type: "add-local-movie",
