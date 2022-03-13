@@ -29,4 +29,10 @@ export const handlers = [
       );
     }
   ),
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}movies/622cde84023eda26afe3d1fc`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ message: "Movie deleted" }));
+    }
+  ),
 ];
