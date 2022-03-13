@@ -3,6 +3,7 @@ import {
   DeleteLocalMovieActionInterface,
   Movie,
   SomeActionInterface,
+  AddLocalMovieActionInterface,
 } from "../../interfaces/Movie";
 import { actionsTypes } from "../actions/actionsTypes";
 
@@ -26,6 +27,13 @@ const moviesReducer = (
         (movie) =>
           movie._id !== (action as DeleteLocalMovieActionInterface).movieId
       );
+      break;
+
+    case actionsTypes.addLocalMovie:
+      newMovies = [
+        (action as AddLocalMovieActionInterface).movie,
+        ...currentMovies,
+      ];
       break;
 
     default:
