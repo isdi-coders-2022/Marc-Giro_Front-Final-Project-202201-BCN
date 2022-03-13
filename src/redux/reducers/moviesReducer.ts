@@ -31,12 +31,10 @@ const moviesReducer = (
       break;
 
     case actionsTypes.addLocalMovie:
-      console.log((action as AddLocalMovieActionInterface).movie);
       newMovies = [
         ...currentMovies,
         (action as AddLocalMovieActionInterface).movie,
       ];
-      console.log(newMovies);
       break;
 
     default:
