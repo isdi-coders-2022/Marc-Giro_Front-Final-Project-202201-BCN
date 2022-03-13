@@ -7,7 +7,7 @@ export interface Movie {
 }
 
 export interface MovieDetails extends Movie {
-  Genre: string;
+  Genre?: string;
   Runtime: number;
   Director: string;
   Writer: string;
