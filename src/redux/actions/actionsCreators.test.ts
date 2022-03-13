@@ -1,4 +1,4 @@
-import { Movie, MovieDetails } from "../../interfaces/Movie";
+import { Movie } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
   deleteLocalMovieAction,
