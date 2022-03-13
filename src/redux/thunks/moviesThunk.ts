@@ -1,6 +1,8 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
+import { MovieDetails } from "../../interfaces/Movie";
 import {
+  addLocalMovieAction,
   deleteLocalMovieAction,
   loadLocalMoviesAction,
 } from "../actions/actionsCreators";
@@ -26,5 +28,22 @@ export const deleteLocalMovieThunk =
 
     if (responseMessage.message === "Movie deleted") {
       dispatch(deleteLocalMovieAction(movieId));
+    }
+  };
+
+export const addLocalMovieThunk =
+  (movie: MovieDetails) =>
+  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(`${url}movies/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(movie),
+    });
+    const responseCreateMovie = await response.json();
+
+    if (responseCreateMovie.message === "Movie created") {
+      dispatch(addLocalMovieAction(responseCreateMovie.movie));
     }
   };

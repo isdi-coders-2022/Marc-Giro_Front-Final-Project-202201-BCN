@@ -46,4 +46,26 @@ export const handlers = [
       );
     }
   ),
+
+  rest.post(`${process.env.REACT_APP_API_URL}movies/`, (req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json({
+        movie: {
+          Title: "Adeu",
+          Actors: "protagonist supporting character",
+          Director: "movie director",
+          Genre: "drama",
+          Plot: "summary of the movie",
+          Poster:
+            "https://m.media-amazon.com/images/M/MV5BNTE3MDc1MjY4NV5BMl5BanBnXkFtZT...",
+          Runtime: 120,
+          Type: "movie",
+          Writer: "movie writers",
+          Year: "1999",
+        },
+        message: "Movie created",
+      })
+    );
+  }),
 ];
