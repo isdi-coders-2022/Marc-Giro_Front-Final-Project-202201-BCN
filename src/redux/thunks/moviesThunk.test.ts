@@ -15,7 +15,7 @@ describe("Given a loadLocalMoviesThunk function", () => {
 });
 
 describe("Given a deleteLocalMovieThunk function", () => {
-  describe("When it is called", () => {
+  describe("When it is called with the right id", () => {
     test("Then it should dispatch a function", async () => {
       const movieId = "622cde84023eda26afe3d1fc";
       const dispatch = jest.fn();
@@ -24,6 +24,18 @@ describe("Given a deleteLocalMovieThunk function", () => {
       await innerThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's called with a wrong id", () => {
+    test("Then it shouldn't dispatch the function", async () => {
+      const moveiId = "akljsdg3489";
+      const dispatch = jest.fn();
+
+      const innerThunk = await deleteLocalMovieThunk(moveiId);
+      await innerThunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
