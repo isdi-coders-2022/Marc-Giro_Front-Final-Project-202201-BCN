@@ -35,4 +35,15 @@ export const handlers = [
       return res(ctx.status(200), ctx.json({ message: "Movie deleted" }));
     }
   ),
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}movies/akljsdg3489`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(404),
+        ctx.json({
+          message: "We couldn't find the movie you requested to delete",
+        })
+      );
+    }
+  ),
 ];
