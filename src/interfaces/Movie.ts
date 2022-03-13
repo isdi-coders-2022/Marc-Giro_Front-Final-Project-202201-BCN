@@ -17,3 +17,7 @@ export interface LoadLocalMoviesActionInterface extends SomeActionInterface {
 export interface DeleteLocalMovieActionInterface extends SomeActionInterface {
   movieId: string;
 }
+
+export interface AddLocalMovieActionInterface extends SomeActionInterface {
+  movie: Movie;
+}
