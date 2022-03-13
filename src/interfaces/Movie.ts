@@ -28,5 +28,5 @@ export interface DeleteLocalMovieActionInterface extends SomeActionInterface {
 }
 
 export interface AddLocalMovieActionInterface extends SomeActionInterface {
-  movie: MovieDetails;
+  movie: Movie;
 }

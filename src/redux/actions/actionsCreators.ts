@@ -22,7 +22,7 @@ export const deleteLocalMovieAction = (
 });
 
 export const addLocalMovieAction = (
-  movie: MovieDetails
+  movie: Movie
 ): AddLocalMovieActionInterface => ({
   type: actionsTypes.addLocalMovie,
   movie,

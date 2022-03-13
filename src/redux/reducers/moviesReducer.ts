@@ -12,7 +12,8 @@ const moviesReducer = (
   action:
     | SomeActionInterface
     | LoadLocalMoviesActionInterface
-    | DeleteLocalMovieActionInterface = {
+    | DeleteLocalMovieActionInterface
+    | AddLocalMovieActionInterface = {
     type: "",
     movies: [],
   }
@@ -30,10 +31,12 @@ const moviesReducer = (
       break;
 
     case actionsTypes.addLocalMovie:
+      console.log((action as AddLocalMovieActionInterface).movie);
       newMovies = [
-        (action as AddLocalMovieActionInterface).movie,
         ...currentMovies,
+        (action as AddLocalMovieActionInterface).movie,
       ];
+      console.log(newMovies);
       break;
 
     default:
