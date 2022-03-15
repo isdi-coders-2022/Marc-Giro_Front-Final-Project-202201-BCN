@@ -13,6 +13,10 @@ function App() {
         <Route path="/login" element={"placeholder <LoginPage>"} />
         <Route path="/register" element={"placeholder <RegisterPage>"} />
         <Route path="/home" element={<HomePage />} />
+        <Route
+          path="/createmovie"
+          element={"placeholder <CreateMoviePage />"}
+        />
         <Route path="/movie/:id" element={"placeholder <MoviePage />"} />
         <Route path="/watchlist" element={"placeholder <WatchlistPage />"} />
         <Route path="/ratings" element={"placeholder <RatingsPage />"} />
