@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const FormButtonStyle = styled.button`
   background-color: #83c5be40;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 500;
   border-radius: 10px;
-  width: 316px;
-  height: 62px;
+  width: 253px;
+  height: 42px;
   color: black;
   border-style: none;
+  margin-top: 20px;
 `;
 
 interface ButtonProps {
@@ -18,7 +19,7 @@ interface ButtonProps {
 
 const FormButton = ({ actionOnClick, text }: ButtonProps): JSX.Element => {
   return (
-    <FormButtonStyle type="button" onClick={actionOnClick}>
+    <FormButtonStyle type="submit" onClick={actionOnClick}>
       {text}
     </FormButtonStyle>
   );

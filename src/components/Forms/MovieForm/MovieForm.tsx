@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
+import FormButton from "../../Buttons/FormButton";
 
 const MovieFormStyle = styled.div`
   width: 90vw;
@@ -8,6 +9,9 @@ const MovieFormStyle = styled.div`
   & form {
     display: flex;
     flex-direction: column;
+    @media (min-width: 800px) {
+      align-items: center;
+    }
 
     & div {
       display: flex;
@@ -178,17 +182,26 @@ const MovieForm = () => {
           </div>
         </div>
 
-        <label>Plot</label>
-        <textarea
-          rows={6}
-          placeholder="An action drama about a mysterious Hollywood stuntman and mechanic who moonlights as a getaway driver, and finds himself in trouble when he helps out his neighbor."
-          {...register("Plot", { required: true })}
-        ></textarea>
+        <div>
+          <div>
+            <label>Plot</label>
+            <textarea
+              rows={6}
+              placeholder="An action drama about a mysterious Hollywood stuntman and mechanic who moonlights as a getaway driver, and finds himself in trouble when he helps out his neighbor."
+              {...register("Plot", { required: true })}
+            ></textarea>
+          </div>
+          <div>
+            <label>Image</label>
+            <input type="file" {...register("Poster")} />
+          </div>
+        </div>
 
-        <label>Image</label>
-        <input type="file" {...register("Poster")} />
-
-        {!isInvalid ? <button type="submit">Create a Movie</button> : <></>}
+        {!isInvalid ? (
+          <FormButton text="Create your movie" actionOnClick={() => {}} />
+        ) : (
+          <></>
+        )}
       </form>
     </MovieFormStyle>
   );
