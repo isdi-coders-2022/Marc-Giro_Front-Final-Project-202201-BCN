@@ -3,6 +3,7 @@ import "@fontsource/montserrat";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { Navbar } from "./components/Navbar/Navbar";
+import { CreateMoviePage } from "./pages/CreateMoviePage";
 
 function App() {
   return (
@@ -13,10 +14,7 @@ function App() {
         <Route path="/login" element={"placeholder <LoginPage>"} />
         <Route path="/register" element={"placeholder <RegisterPage>"} />
         <Route path="/home" element={<HomePage />} />
-        <Route
-          path="/createmovie"
-          element={"placeholder <CreateMoviePage />"}
-        />
+        <Route path="/createmovie" element={<CreateMoviePage />} />
         <Route path="/movie/:id" element={"placeholder <MoviePage />"} />
         <Route path="/watchlist" element={"placeholder <WatchlistPage />"} />
         <Route path="/ratings" element={"placeholder <RatingsPage />"} />

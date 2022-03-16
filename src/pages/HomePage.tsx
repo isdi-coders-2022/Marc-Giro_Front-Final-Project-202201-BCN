@@ -14,7 +14,6 @@ export const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <MovieForm />
       <MoviesList movies={moviesList} />
     </>
   );
