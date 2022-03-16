@@ -10,19 +10,18 @@ const FormButtonStyle = styled.button`
   color: black;
   border-style: none;
   margin-top: 20px;
+  :hover {
+    cursor: pointer;
+    background-color: hotpink;
+  }
 `;
 
 interface ButtonProps {
-  actionOnClick: () => void;
   text: string;
 }
 
-const FormButton = ({ actionOnClick, text }: ButtonProps): JSX.Element => {
-  return (
-    <FormButtonStyle type="submit" onClick={actionOnClick}>
-      {text}
-    </FormButtonStyle>
-  );
+const FormButton = ({ text }: ButtonProps): JSX.Element => {
+  return <FormButtonStyle type="submit">{text}</FormButtonStyle>;
 };
 
 export default FormButton;
