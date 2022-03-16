@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const NavbarStyle = styled.nav`
   background-color: #335c6760;
   width: 100vw;
-  height: 100px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ export const Navbar = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to="/create">
+          <Link to="/createMovie">
             <FontAwesomeIcon icon={faCirclePlus} />
           </Link>
         </li>
