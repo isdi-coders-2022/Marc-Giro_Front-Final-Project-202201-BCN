@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
+import { useNavigate } from "react-router-dom";
 
 const MovieFormStyle = styled.div`
   width: 90vw;
@@ -70,7 +71,7 @@ enum TypeOptions {
 
 interface IFormInput {
   Title: string;
-  Runtime: number;
+  Runtime: string;
   Year: string;
   Type: TypeOptions;
   Genre: string;
@@ -78,16 +79,33 @@ interface IFormInput {
   Writer: string;
   Actors: string;
   Plot: string;
-  Poster: string;
+  Poster?: any;
 }
 
 const MovieForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { register, watch, handleSubmit } = useForm<IFormInput>({});
+  const { register, watch, handleSubmit } = useForm<IFormInput>({
+    defaultValues: {
+      Title: "",
+      Runtime: "",
+      Year: "",
+      Type: TypeOptions.Movie,
+      Genre: "",
+      Director: "",
+      Writer: "",
+      Actors: "",
+      Plot: "",
+      Poster: "",
+    },
+  });
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    data.Poster = data.Poster[0];
+    if (data.Poster) {
+      data.Poster = data.Poster[0];
+    }
     dispatch(addLocalMovieThunk(data));
+    navigate("/");
   };
   const watchRequiredFields = watch([
     "Title",

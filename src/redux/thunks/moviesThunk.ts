@@ -2,6 +2,7 @@ import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
   AddLocalMovieActionInterface,
+  CreatedMovie,
   MovieDetails,
 } from "../../interfaces/Movie";
 import {
@@ -36,7 +37,7 @@ export const deleteLocalMovieThunk =
   };
 
 export const addLocalMovieThunk =
-  (movie: MovieDetails) =>
+  (movie: CreatedMovie) =>
   async (
     dispatch: ThunkDispatch<RootState, void, AddLocalMovieActionInterface>
   ): Promise<void> => {
