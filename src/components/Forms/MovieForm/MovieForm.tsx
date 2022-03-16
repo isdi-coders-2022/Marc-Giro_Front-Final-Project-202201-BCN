@@ -40,6 +40,9 @@ const MovieFormStyle = styled.div`
       }
     }
     & input {
+      border: none;
+      border-radius: 10px;
+      background-color: #83c5be25;
       @media (min-width: 800px) {
         margin-left: 40px;
         margin-right: 40px;
@@ -48,6 +51,9 @@ const MovieFormStyle = styled.div`
       }
     }
     & textarea {
+      border-radius: 10px;
+      border: none;
+      background-color: #83c5be25;
       @media (min-width: 800px) {
         margin-left: 40px;
         margin-right: 40px;
@@ -55,6 +61,9 @@ const MovieFormStyle = styled.div`
       }
     }
     & select {
+      border: none;
+      background-color: #83c5be25;
+      border-radius: 10px;
       @media (min-width: 800px) {
         margin-left: 40px;
         margin-right: 40px;
@@ -86,20 +95,7 @@ const MovieForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { register, watch, handleSubmit } = useForm<IFormInput>({
-    defaultValues: {
-      Title: "",
-      Runtime: "",
-      Year: "",
-      Type: TypeOptions.Movie,
-      Genre: "",
-      Director: "",
-      Writer: "",
-      Actors: "",
-      Plot: "",
-      Poster: "",
-    },
-  });
+  const { register, watch, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     if (data.Poster) {
       data.Poster = data.Poster[0];
@@ -218,7 +214,11 @@ const MovieForm = () => {
           </div>
           <div>
             <label>Image</label>
-            <input type="file" {...register("Poster")} />
+            <input
+              className="image-input"
+              type="file"
+              {...register("Poster")}
+            />
           </div>
         </div>
 

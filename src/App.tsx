@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { Navbar } from "./components/Navbar/Navbar";
 import { CreateMoviePage } from "./pages/CreateMoviePage";
+import { RegisterUserPage } from "./pages/RegisterUserPage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/login" element={"placeholder <LoginPage>"} />
-        <Route path="/register" element={"placeholder <RegisterPage>"} />
+        <Route path="/register" element={<RegisterUserPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/createmovie" element={<CreateMoviePage />} />
         <Route path="/movie/:id" element={"placeholder <MoviePage />"} />

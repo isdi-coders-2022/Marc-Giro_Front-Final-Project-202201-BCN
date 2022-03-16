@@ -10,7 +10,7 @@ const FormButtonStyle = styled.button`
   color: black;
   border-style: none;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   :hover {
     cursor: pointer;
     background-color: hotpink;
