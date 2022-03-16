@@ -1,11 +1,15 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-import { MovieDetails } from "../../interfaces/Movie";
+import {
+  AddLocalMovieActionInterface,
+  MovieDetails,
+} from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
   deleteLocalMovieAction,
   loadLocalMoviesAction,
 } from "../actions/actionsCreators";
+import { RootState } from "../store";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -33,13 +37,24 @@ export const deleteLocalMovieThunk =
 
 export const addLocalMovieThunk =
   (movie: MovieDetails) =>
-  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
-    const response = await fetch(`${url}movies/`, {
+  async (
+    dispatch: ThunkDispatch<RootState, void, AddLocalMovieActionInterface>
+  ): Promise<void> => {
+    const data = new FormData();
+    data.append("Title", movie.Title);
+    data.append("Year", movie.Year);
+    data.append("Genre", movie.Genre);
+    data.append("Runtime", movie.Runtime);
+    data.append("Type", movie.Type);
+    data.append("Director", movie.Director);
+    data.append("Writer", movie.Writer);
+    data.append("Actors", movie.Actors);
+    data.append("Plot", movie.Plot);
+    data.append("Poster", movie.Poster);
+
+    const response = await fetch(`${url}movies`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(movie),
+      body: data,
     });
     const responseCreateMovie = await response.json();
 

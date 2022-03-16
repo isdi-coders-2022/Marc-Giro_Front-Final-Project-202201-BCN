@@ -13,16 +13,11 @@ const FormButtonStyle = styled.button`
 `;
 
 interface ButtonProps {
-  actionOnClick: () => void;
   text: string;
 }
 
-const FormButton = ({ actionOnClick, text }: ButtonProps): JSX.Element => {
-  return (
-    <FormButtonStyle type="submit" onClick={actionOnClick}>
-      {text}
-    </FormButtonStyle>
-  );
+const FormButton = ({ text }: ButtonProps): JSX.Element => {
+  return <FormButtonStyle type="submit">{text}</FormButtonStyle>;
 };
 
 export default FormButton;

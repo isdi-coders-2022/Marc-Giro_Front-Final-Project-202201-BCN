@@ -47,7 +47,7 @@ export const handlers = [
     }
   ),
 
-  rest.post(`${process.env.REACT_APP_API_URL}movies/`, (req, res, ctx) => {
+  rest.post(`${process.env.REACT_APP_API_URL}movies`, (req, res, ctx) => {
     return res(
       ctx.status(201),
       ctx.json({

@@ -1,5 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
 
 const MovieFormStyle = styled.div`
@@ -68,7 +70,7 @@ enum TypeOptions {
 
 interface IFormInput {
   Title: string;
-  Runtime: string;
+  Runtime: number;
   Year: string;
   Type: TypeOptions;
   Genre: string;
@@ -80,8 +82,13 @@ interface IFormInput {
 }
 
 const MovieForm = () => {
-  const { register, watch, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {};
+  const dispatch = useDispatch();
+
+  const { register, watch, handleSubmit } = useForm<IFormInput>({});
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    data.Poster = data.Poster[0];
+    dispatch(addLocalMovieThunk(data));
+  };
   const watchRequiredFields = watch([
     "Title",
     "Runtime",
@@ -95,7 +102,7 @@ const MovieForm = () => {
 
   const isInvalid =
     watchRequiredFields[0] === "" ||
-    watchRequiredFields[1] === "" ||
+    watchRequiredFields[1] === null ||
     watchRequiredFields[2] === "" ||
     watchRequiredFields[4] === "" ||
     watchRequiredFields[5] === "" ||
@@ -197,11 +204,7 @@ const MovieForm = () => {
           </div>
         </div>
 
-        {!isInvalid ? (
-          <FormButton text="Create your movie" actionOnClick={() => {}} />
-        ) : (
-          <></>
-        )}
+        {!isInvalid ? <FormButton text="Create your movie" /> : <></>}
       </form>
     </MovieFormStyle>
   );
