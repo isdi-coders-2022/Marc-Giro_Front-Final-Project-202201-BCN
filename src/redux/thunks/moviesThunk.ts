@@ -3,7 +3,6 @@ import { ThunkDispatch } from "redux-thunk";
 import {
   AddLocalMovieActionInterface,
   CreatedMovie,
-  MovieDetails,
 } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
