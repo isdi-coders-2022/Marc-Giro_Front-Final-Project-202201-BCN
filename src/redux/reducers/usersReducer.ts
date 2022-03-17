@@ -5,7 +5,7 @@ import {
   setMessageActionInterface,
 } from "../../interfaces/User";
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user") as string);
 const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };

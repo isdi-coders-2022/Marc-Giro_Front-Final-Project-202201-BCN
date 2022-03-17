@@ -59,9 +59,10 @@ export const loginSuccessAction = (
   userLoginData,
 });
 
-export const loginFailAction = (
-  userLoginData: userLoginDataInterface
-): loginActionInterface => ({
+export const loginFailAction = (): SomeActionInterface => ({
   type: actionsTypes.loginFail,
-  userLoginData,
+});
+
+export const logoutAction = () => ({
+  type: actionsTypes.logout,
 });

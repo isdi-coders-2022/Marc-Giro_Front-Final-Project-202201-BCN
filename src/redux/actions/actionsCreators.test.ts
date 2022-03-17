@@ -154,17 +154,11 @@ describe("Given login success action", () => {
 describe("Given login fail action", () => {
   describe("When it is invoked", () => {
     test("Then it should return the action", () => {
-      const userLoginData = {
-        id: "--0345",
-        username: "hola",
-        token: "890256ajkl;gf",
-      };
       const expectedAction = {
         type: "login-fail",
-        userLoginData,
       };
 
-      const action = loginFailAction(userLoginData);
+      const action = loginFailAction();
 
       expect(action).toEqual(expectedAction);
     });
