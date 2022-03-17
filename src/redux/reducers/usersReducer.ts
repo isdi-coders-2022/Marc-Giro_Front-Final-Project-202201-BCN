@@ -1,9 +1,6 @@
 import { actionsTypes } from "../actions/actionsTypes";
 import { SomeActionInterface } from "../../interfaces/Movie";
-import {
-  loginActionInterface,
-  setMessageActionInterface,
-} from "../../interfaces/User";
+import { loginActionInterface } from "../../interfaces/User";
 
 const user = JSON.parse(localStorage.getItem("user") as string);
 const initialState = user
@@ -12,10 +9,10 @@ const initialState = user
 
 const usersReducer = (
   state = initialState,
-  action:
-    | SomeActionInterface
-    | setMessageActionInterface
-    | loginActionInterface = { type: "" }
+  action: SomeActionInterface | loginActionInterface = {
+    type: "",
+    userLoginData: { id: "", username: "", token: "" },
+  }
 ) => {
   switch (action.type) {
     case actionsTypes.registerSuccess:

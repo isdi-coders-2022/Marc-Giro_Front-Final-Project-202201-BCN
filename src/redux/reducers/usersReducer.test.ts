@@ -48,7 +48,10 @@ describe("Given a usersReducer function", () => {
 
       const newState = usersReducer(state, action);
 
-      expect(newState).toEqual({ isLoggedIn: true, user: userLoginData });
+      expect(newState).toEqual({
+        isLoggedIn: true,
+        user: userLoginData,
+      });
     });
   });
 

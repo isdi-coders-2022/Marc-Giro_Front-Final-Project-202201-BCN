@@ -4,12 +4,14 @@ import { setMessageActionInterface } from "../../interfaces/User";
 
 const messageReducer = (
   state = {},
-  action: SomeActionInterface | setMessageActionInterface = { type: "" }
+  action: SomeActionInterface | setMessageActionInterface = {
+    type: "",
+    message: "",
+  }
 ) => {
-  const { message } = action as setMessageActionInterface;
   switch (action.type) {
     case actionsTypes.setMessage:
-      return { message };
+      return (action as setMessageActionInterface).message;
     case actionsTypes.clearMessage:
       return { message: "" };
     default:
