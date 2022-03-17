@@ -132,13 +132,19 @@ describe("Given register fail action", () => {
 });
 
 describe("Given login success action", () => {
-  describe("When it is invoked", () => {
-    test("Then it should return the action", () => {
+  describe("When it is invoked and passed userLoginData", () => {
+    test("Then it should return the action and the data", () => {
+      const userLoginData = {
+        id: "--0345",
+        username: "hola",
+        token: "890256ajkl;gf",
+      };
       const expectedAction = {
         type: "login-success",
+        userLoginData,
       };
 
-      const action = loginSuccessAction();
+      const action = loginSuccessAction(userLoginData);
 
       expect(action).toEqual(expectedAction);
     });

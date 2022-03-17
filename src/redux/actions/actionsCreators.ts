@@ -5,7 +5,11 @@ import {
   AddLocalMovieActionInterface,
   SomeActionInterface,
 } from "../../interfaces/Movie";
-import { setMessageActionInterface } from "../../interfaces/User";
+import {
+  loginActionInterface,
+  setMessageActionInterface,
+  userLoginDataInterface,
+} from "../../interfaces/User";
 import { actionsTypes } from "./actionsTypes";
 
 export const loadLocalMoviesAction = (
@@ -48,10 +52,17 @@ export const registerFailAction = (): SomeActionInterface => ({
   type: actionsTypes.registerFail,
 });
 
-export const loginSuccessAction = (): SomeActionInterface => ({
+export const loginSuccessAction = (
+  userLoginData: userLoginDataInterface
+): loginActionInterface => ({
   type: actionsTypes.loginSuccess,
+  userLoginData,
 });
 
 export const loginFailAction = (): SomeActionInterface => ({
   type: actionsTypes.loginFail,
+});
+
+export const logoutAction = () => ({
+  type: actionsTypes.logout,
 });
