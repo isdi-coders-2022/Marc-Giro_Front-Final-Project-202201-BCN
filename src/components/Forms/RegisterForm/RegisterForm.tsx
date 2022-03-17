@@ -1,9 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import styled from "styled-components";
 // import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const RegisterFormStyle = styled.div`
   width: 90vw;
