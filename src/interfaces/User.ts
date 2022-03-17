@@ -5,6 +5,12 @@ export interface userLoginDataInterface {
   username: string;
   token: string;
 }
+
+export interface userRegisterDataInterface {
+  name: string;
+  username: string;
+  password: string;
+}
 export interface setMessageActionInterface extends SomeActionInterface {
   message: string;
 }

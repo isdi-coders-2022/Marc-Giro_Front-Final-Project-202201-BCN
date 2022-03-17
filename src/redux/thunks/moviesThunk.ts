@@ -1,8 +1,9 @@
-import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
   AddLocalMovieActionInterface,
   CreatedMovie,
+  DeleteLocalMovieActionInterface,
+  LoadLocalMoviesActionInterface,
 } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
@@ -15,7 +16,9 @@ const url = process.env.REACT_APP_API_URL;
 
 export const loadLocalMoviesThunk =
   (search: string) =>
-  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+  async (
+    dispatch: ThunkDispatch<void, unknown, LoadLocalMoviesActionInterface>
+  ) => {
     const response = await fetch(`${url}movies/?s=${search}`);
     const moviesList = await response.json();
 
@@ -24,7 +27,9 @@ export const loadLocalMoviesThunk =
 
 export const deleteLocalMovieThunk =
   (movieId: string) =>
-  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+  async (
+    dispatch: ThunkDispatch<void, unknown, DeleteLocalMovieActionInterface>
+  ) => {
     const response = await fetch(`${url}movies/${movieId}`, {
       method: "DELETE",
     });
