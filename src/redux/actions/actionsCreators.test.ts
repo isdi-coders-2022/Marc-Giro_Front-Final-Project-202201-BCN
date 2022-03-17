@@ -1,8 +1,14 @@
 import { Movie } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
+  clearMessageAction,
   deleteLocalMovieAction,
   loadLocalMoviesAction,
+  loginFailAction,
+  loginSuccessAction,
+  registerFailAction,
+  registerSuccessAction,
+  setMessageAction,
 } from "./actionsCreators";
 
 describe("Given a load local movies action", () => {
@@ -61,6 +67,92 @@ describe("Given an add local movie action", () => {
       };
 
       const action = addLocalMovieAction(movie);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given set message action", () => {
+  describe("When it receives a message", () => {
+    test("Then it should return the action and the message", () => {
+      const message: string = "message";
+      const expectedAction = {
+        type: "set-message",
+        message,
+      };
+
+      const action = setMessageAction(message);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a clear message action", () => {
+  describe("When it is invoked", () => {
+    test("Then it should return the action", () => {
+      const expectedAction = {
+        type: "clear-message",
+      };
+
+      const action = clearMessageAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given register success action", () => {
+  describe("When it is invoked", () => {
+    test("Then it should return the action", () => {
+      const expectedAction = {
+        type: "register-success",
+      };
+
+      const action = registerSuccessAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given register fail action", () => {
+  describe("When it is invoked", () => {
+    test("Then it should return the action", () => {
+      const expectedAction = {
+        type: "register-fail",
+      };
+
+      const action = registerFailAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given login success action", () => {
+  describe("When it is invoked", () => {
+    test("Then it should return the action", () => {
+      const expectedAction = {
+        type: "login-success",
+      };
+
+      const action = loginSuccessAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given login fail action", () => {
+  describe("When it is invoked", () => {
+    test("Then it should return the action", () => {
+      const expectedAction = {
+        type: "login-fail",
+      };
+
+      const action = loginFailAction();
 
       expect(action).toEqual(expectedAction);
     });
