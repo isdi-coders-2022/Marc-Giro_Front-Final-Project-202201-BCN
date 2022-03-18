@@ -2,7 +2,7 @@ import jwtDecode from "jwt-decode";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import {
-  userLoginDataInterface,
+  userLoginDataFormInterface,
   userRegisterDataInterface,
 } from "../../interfaces/User";
 import {
@@ -36,7 +36,7 @@ export const createUserThunk =
   };
 
 export const loginUserThunk =
-  (userLoginData: userLoginDataInterface) =>
+  (userLoginData: userLoginDataFormInterface) =>
   async (dispatch: ThunkDispatch<RootState, void, AnyAction>) => {
     const response = await fetch(`${url}user/login`, {
       method: "POST",
@@ -45,6 +45,7 @@ export const loginUserThunk =
       },
       body: JSON.stringify(userLoginData),
     });
+    console.log(response);
     if (response.ok) {
       const tokenResponse = await response.json();
       const { id, username }: any = await jwtDecode(tokenResponse.token);

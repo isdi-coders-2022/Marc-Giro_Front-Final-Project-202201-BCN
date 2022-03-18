@@ -6,6 +6,11 @@ export interface userLoginDataInterface {
   token: string;
 }
 
+export interface userLoginDataFormInterface {
+  username: string;
+  password: string;
+}
+
 export interface userRegisterDataInterface {
   name: string;
   username: string;
