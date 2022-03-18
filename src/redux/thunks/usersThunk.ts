@@ -6,6 +6,7 @@ import {
   userRegisterDataInterface,
 } from "../../interfaces/User";
 import {
+  loginFailAction,
   loginSuccessAction,
   registerFailAction,
   registerSuccessAction,
@@ -27,39 +28,46 @@ export const createUserThunk =
     });
     const newUser = await response.json();
     if (newUser.message) {
-      dispatch(registerFailAction);
       dispatch(setMessageAction(newUser.message));
+      dispatch(registerFailAction);
     } else {
-      dispatch(registerSuccessAction());
       dispatch(setMessageAction(`${newUser.username} registered!`));
+      dispatch(registerSuccessAction());
     }
   };
 
 export const loginUserThunk =
   (userLoginData: userLoginDataFormInterface) =>
   async (dispatch: ThunkDispatch<RootState, void, AnyAction>) => {
-    const response = await fetch(`${url}user/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userLoginData),
-    });
-    console.log(response);
-    if (response.ok) {
+    try {
+      const response = await fetch(`${url}user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userLoginData),
+      });
       const tokenResponse = await response.json();
-      const { id, username }: any = await jwtDecode(tokenResponse.token);
-      localStorage.setItem(
-        "userToken",
-        JSON.stringify({
-          id,
-          username,
-          token: tokenResponse.token,
-        })
-      );
-      dispatch(
-        loginSuccessAction({ id, username, token: tokenResponse.token })
-      );
-    } else {
+      if (!tokenResponse.error) {
+        const { id, username }: any = await jwtDecode(tokenResponse.token);
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify({
+            id,
+            username,
+            token: tokenResponse.token,
+          })
+        );
+        dispatch(
+          loginSuccessAction({ id, username, token: tokenResponse.token })
+        );
+        dispatch(setMessageAction("Log in successful"));
+      } else {
+        dispatch(loginFailAction());
+        dispatch(setMessageAction(tokenResponse.message));
+      }
+    } catch (error) {
+      dispatch(loginFailAction());
+      dispatch(setMessageAction("General error"));
     }
   };
