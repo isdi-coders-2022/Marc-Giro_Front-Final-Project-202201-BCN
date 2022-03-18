@@ -3,6 +3,7 @@ import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { userRegisterDataInterface } from "../../interfaces/User";
 import {
+  registerFailAction,
   registerSuccessAction,
   setMessageAction,
 } from "../actions/actionsCreators";
@@ -22,7 +23,7 @@ export const createUserThunk =
     });
     const newUser = await response.json();
     if (newUser.message) {
-      dispatch(registerSuccessAction);
+      dispatch(registerFailAction);
       dispatch(setMessageAction(newUser.message));
     } else {
       dispatch(registerSuccessAction());
