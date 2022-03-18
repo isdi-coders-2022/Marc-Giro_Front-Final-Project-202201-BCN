@@ -1,7 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { createUserThunk } from "../../../redux/thunks/usersThunk";
+import // createUserThunk,
+// loginUserThunk,
+"../../../redux/thunks/usersThunk";
 import FormButton from "../../Buttons/FormButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,7 +61,7 @@ const LoginForm = ({ message }: any) => {
 
   const { register, watch, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    dispatch(loginUserThunk(data));
+    // dispatch(loginUserThunk(data));
     if (typeof message === "string") {
       if (message === `${data.username} registered!`) {
         toast.success(message, {
