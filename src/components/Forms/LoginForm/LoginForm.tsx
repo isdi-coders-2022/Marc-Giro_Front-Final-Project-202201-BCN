@@ -1,15 +1,13 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import // createUserThunk,
-// loginUserThunk,
-"../../../redux/thunks/usersThunk";
 import FormButton from "../../Buttons/FormButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { clearMessageAction } from "../../../redux/actions/actionsCreators";
 import { loginUserThunk } from "../../../redux/thunks/usersThunk";
-// import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginFormStyle = styled.div`
   width: 90vw;
@@ -20,6 +18,11 @@ const LoginFormStyle = styled.div`
     flex-direction: column;
     @media (min-width: 800px) {
       align-items: center;
+    }
+
+    & .disabled {
+      background-color: #c9c6c5;
+      cursor: default;
     }
 
     & div {
@@ -58,19 +61,19 @@ interface IFormInput {
 
 const LoginForm = ({ message }: any) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const { register, watch, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    dispatch(loginUserThunk(data));
+  useEffect(() => {
     if (typeof message === "string") {
-      if (message === `${data.username} registered!`) {
+      dispatch(clearMessageAction());
+      if (message.includes("successful")) {
         toast.success(message, {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 2000,
           theme: "colored",
           hideProgressBar: true,
         });
+        navigate("/");
       } else {
         toast.error(message, {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -80,9 +83,12 @@ const LoginForm = ({ message }: any) => {
         });
       }
     }
+  }, [dispatch, message, navigate]);
 
+  const { register, watch, handleSubmit } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    dispatch(loginUserThunk(data));
     dispatch(clearMessageAction());
-    // navigate("/user/login");
   };
   const watchRequiredFields = watch(["username", "password"]);
 
@@ -110,7 +116,11 @@ const LoginForm = ({ message }: any) => {
           />
         </div>
 
-        {!isInvalid ? <FormButton text="Login" /> : <></>}
+        <FormButton
+          className={!isInvalid ? "" : "disabled"}
+          disabled={isInvalid}
+          text="Login"
+        />
       </form>
     </LoginFormStyle>
   );

@@ -19,10 +19,20 @@ const FormButtonStyle = styled.button`
 
 interface ButtonProps {
   text: string;
+  disabled?: boolean;
+  className?: string;
 }
 
-const FormButton = ({ text }: ButtonProps): JSX.Element => {
-  return <FormButtonStyle type="submit">{text}</FormButtonStyle>;
+const FormButton = ({
+  text,
+  disabled,
+  className,
+}: ButtonProps): JSX.Element => {
+  return (
+    <FormButtonStyle disabled={disabled} className={className} type="submit">
+      {text}
+    </FormButtonStyle>
+  );
 };
 
 export default FormButton;

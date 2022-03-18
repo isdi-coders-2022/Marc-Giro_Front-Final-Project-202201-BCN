@@ -21,7 +21,6 @@ const LoginUserPageStyle = styled.div`
 
 export const LoginUserPage = (): JSX.Element => {
   const message = useSelector((state: RootState) => state.messageReducer);
-  // console.log(message);
   return (
     <>
       <LoginUserPageStyle>
