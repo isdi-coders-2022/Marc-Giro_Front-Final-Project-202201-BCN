@@ -8,6 +8,7 @@ import FormButton from "../../Buttons/FormButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { clearMessageAction } from "../../../redux/actions/actionsCreators";
+import { loginUserThunk } from "../../../redux/thunks/usersThunk";
 // import { useNavigate } from "react-router-dom";
 
 const LoginFormStyle = styled.div`
@@ -61,7 +62,7 @@ const LoginForm = ({ message }: any) => {
 
   const { register, watch, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    // dispatch(loginUserThunk(data));
+    dispatch(loginUserThunk(data));
     if (typeof message === "string") {
       if (message === `${data.username} registered!`) {
         toast.success(message, {
@@ -109,7 +110,7 @@ const LoginForm = ({ message }: any) => {
           />
         </div>
 
-        {!isInvalid ? <FormButton text="Sign Up" /> : <></>}
+        {!isInvalid ? <FormButton text="Login" /> : <></>}
       </form>
     </LoginFormStyle>
   );
