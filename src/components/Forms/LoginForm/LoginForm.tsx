@@ -1,14 +1,16 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { createUserThunk } from "../../../redux/thunks/usersThunk";
+import // createUserThunk,
+// loginUserThunk,
+"../../../redux/thunks/usersThunk";
 import FormButton from "../../Buttons/FormButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { clearMessageAction } from "../../../redux/actions/actionsCreators";
 // import { useNavigate } from "react-router-dom";
 
-const RegisterFormStyle = styled.div`
+const LoginFormStyle = styled.div`
   width: 90vw;
   display: flex;
   justify-content: center;
@@ -49,18 +51,17 @@ const RegisterFormStyle = styled.div`
 `;
 
 interface IFormInput {
-  name: string;
   username: string;
   password: string;
 }
 
-const RegisterForm = ({ message }: any) => {
+const LoginForm = ({ message }: any) => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   const { register, watch, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    dispatch(createUserThunk(data));
+    // dispatch(loginUserThunk(data));
     if (typeof message === "string") {
       if (message === `${data.username} registered!`) {
         toast.success(message, {
@@ -82,25 +83,14 @@ const RegisterForm = ({ message }: any) => {
     dispatch(clearMessageAction());
     // navigate("/user/login");
   };
-  const watchRequiredFields = watch(["name", "username", "password"]);
+  const watchRequiredFields = watch(["username", "password"]);
 
   const isInvalid =
-    watchRequiredFields[0] === "" ||
-    watchRequiredFields[1] === "" ||
-    watchRequiredFields[2] === "";
+    watchRequiredFields[0] === "" || watchRequiredFields[1] === "";
 
   return (
-    <RegisterFormStyle>
+    <LoginFormStyle>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Name</label>
-          <input
-            type="text"
-            placeholder="mario"
-            {...register("name", { required: true })}
-          />
-        </div>
-
         <div>
           <label>Username</label>
           <input
@@ -121,8 +111,8 @@ const RegisterForm = ({ message }: any) => {
 
         {!isInvalid ? <FormButton text="Sign Up" /> : <></>}
       </form>
-    </RegisterFormStyle>
+    </LoginFormStyle>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
