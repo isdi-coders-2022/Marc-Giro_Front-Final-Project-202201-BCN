@@ -6,7 +6,6 @@ import {
   userRegisterDataInterface,
 } from "../../interfaces/User";
 import {
-  clearMessageAction,
   loginFailAction,
   loginSuccessAction,
   registerFailAction,
