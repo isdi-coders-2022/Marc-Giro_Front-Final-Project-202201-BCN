@@ -66,11 +66,13 @@ const MovieCardStyle = styled.li`
 `;
 interface MovieCardProps {
   movie: Movie;
+  isLoggedIn: Boolean;
 }
 
 toast.configure();
 export const MovieCard = ({
   movie: { Poster, Title, Year, Type, _id },
+  isLoggedIn,
 }: MovieCardProps): JSX.Element => {
   const dispatch = useDispatch();
 
@@ -91,29 +93,33 @@ export const MovieCard = ({
         <h2>{newTitle}</h2>
         <p>{Year}</p>
         <p>{Type}</p>
-        <div className="iconsLine">
-          <i role="button" onClick={() => {}}>
-            <FontAwesomeIcon icon={faStar} />
-          </i>
+        {isLoggedIn ? (
+          <div className="iconsLine">
+            <i role="button" onClick={() => {}}>
+              <FontAwesomeIcon icon={faStar} />
+            </i>
 
-          <i role="button" onClick={() => {}}>
-            <FontAwesomeIcon icon={faBookmark} />
-          </i>
+            <i role="button" onClick={() => {}}>
+              <FontAwesomeIcon icon={faBookmark} />
+            </i>
 
-          <i>
-            <DeleteIcon
-              onClick={() => {
-                deleteMovie(_id);
-                toast.success("Movie deleted", {
-                  position: toast.POSITION.BOTTOM_RIGHT,
-                  autoClose: 500,
-                  theme: "colored",
-                  hideProgressBar: true,
-                });
-              }}
-            />
-          </i>
-        </div>
+            <i>
+              <DeleteIcon
+                onClick={() => {
+                  deleteMovie(_id);
+                  toast.success("Movie deleted", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 500,
+                    theme: "colored",
+                    hideProgressBar: true,
+                  });
+                }}
+              />
+            </i>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </MovieCardStyle>
   );
