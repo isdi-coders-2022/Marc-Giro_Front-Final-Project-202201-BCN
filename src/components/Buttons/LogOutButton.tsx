@@ -9,7 +9,7 @@ const LogOutButtonStyle = styled.button`
   height: 42px;
   color: black;
   border-style: none;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 40px;
   :hover {
     cursor: pointer;

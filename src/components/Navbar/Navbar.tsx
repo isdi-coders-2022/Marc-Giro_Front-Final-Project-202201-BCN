@@ -61,7 +61,7 @@ export const Navbar = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to="/register">
+          <Link to={isLoggedIn ? "/logout" : "/register"}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </li>
