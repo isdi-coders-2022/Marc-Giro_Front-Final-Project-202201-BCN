@@ -26,8 +26,8 @@ const RegisterFormStyle = styled.div`
     }
 
     & div {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin-top: 15px;
+      margin-bottom: 15px;
       display: flex;
       flex-direction: column;
     }
