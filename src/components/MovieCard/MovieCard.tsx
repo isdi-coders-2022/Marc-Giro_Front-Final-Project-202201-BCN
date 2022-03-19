@@ -62,6 +62,7 @@ const MovieCardStyle = styled.li`
 
   & img {
     width: 80px;
+    object-fit: cover;
   }
 `;
 interface MovieCardProps {

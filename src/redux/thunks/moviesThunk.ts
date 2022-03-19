@@ -32,6 +32,9 @@ export const deleteLocalMovieThunk =
   ) => {
     const response = await fetch(`${url}movies/${movieId}`, {
       method: "DELETE",
+      headers: {
+        authorization: JSON.parse(localStorage.userToken).token,
+      },
     });
     const responseMessage = await response.json();
 
@@ -60,6 +63,9 @@ export const addLocalMovieThunk =
     const response = await fetch(`${url}movies`, {
       method: "POST",
       body: data,
+      headers: {
+        authorization: JSON.parse(localStorage.userToken).token,
+      },
     });
     const responseCreateMovie = await response.json();
 
