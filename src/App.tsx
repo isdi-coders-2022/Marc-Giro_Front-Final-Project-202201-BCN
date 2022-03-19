@@ -6,6 +6,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { CreateMoviePage } from "./pages/CreateMoviePage";
 import { RegisterUserPage } from "./pages/RegisterUserPage";
 import { LoginUserPage } from "./pages/LoginUserPage";
+import { LogOutPage } from "./pages/LogOutPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/login" element={<LoginUserPage />} />
         <Route path="/register" element={<RegisterUserPage />} />
+        <Route path="/logout" element={<LogOutPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/createmovie" element={<CreateMoviePage />} />
         <Route path="/movie/:id" element={"placeholder <MoviePage />"} />

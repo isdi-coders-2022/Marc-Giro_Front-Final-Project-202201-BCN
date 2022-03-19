@@ -15,7 +15,7 @@ describe("Given a MovieCard component", () => {
       };
       render(
         <Provider store={store}>
-          <MovieCard movie={movie} />
+          <MovieCard isLoggedIn={true} movie={movie} />
         </Provider>
       );
 
@@ -35,7 +35,7 @@ describe("Given a MovieCard component", () => {
       };
       render(
         <Provider store={store}>
-          <MovieCard movie={movie} />
+          <MovieCard isLoggedIn={true} movie={movie} />
         </Provider>
       );
 

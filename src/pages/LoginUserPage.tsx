@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import LoginForm from "../components/Forms/LoginForm/LoginForm";
 import { RootState } from "../redux/store";
@@ -17,16 +18,25 @@ const LoginUserPageStyle = styled.div`
       margin-bottom: 30px;
     }
   }
+  & p {
+    font-size: 13px;
+  }
 `;
 
 export const LoginUserPage = (): JSX.Element => {
   const message = useSelector((state: RootState) => state.messageReducer);
+
   return (
     <>
-      <LoginUserPageStyle>
-        <h2>Login</h2>
-        <LoginForm message={message} />
-      </LoginUserPageStyle>
+      <>
+        <LoginUserPageStyle>
+          <h2>Login</h2>
+          <LoginForm message={message} />
+          <p>
+            Not registered yet? <Link to={"/register"}>Register</Link>
+          </p>
+        </LoginUserPageStyle>
+      </>
     </>
   );
 };

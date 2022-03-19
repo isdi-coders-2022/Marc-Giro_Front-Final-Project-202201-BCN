@@ -1,6 +1,8 @@
 import { Movie } from "../../interfaces/Movie";
 import { MovieCard } from "../MovieCard/MovieCard";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const MovieCardStyle = styled.div`
   display: flex;
@@ -43,6 +45,7 @@ interface MoviesListProps {
 }
 
 const MoviesList = ({ movies }: MoviesListProps): JSX.Element => {
+  const { isLoggedIn } = useSelector((state: RootState) => state.usersReducer);
   let textItems;
   if (movies.length === 0) {
     textItems = "movies found";
@@ -60,7 +63,11 @@ const MoviesList = ({ movies }: MoviesListProps): JSX.Element => {
           </h3>
           <ul>
             {movies.map((movie: Movie) => (
-              <MovieCard movie={movie} key={movie._id} />
+              <MovieCard
+                isLoggedIn={isLoggedIn}
+                movie={movie}
+                key={movie._id}
+              />
             ))}
           </ul>
         </section>

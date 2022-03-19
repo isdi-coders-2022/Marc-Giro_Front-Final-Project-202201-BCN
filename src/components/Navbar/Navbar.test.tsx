@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../redux/store";
 import { Navbar } from "./Navbar";
 
 describe("Given a Navbar component", () => {
@@ -7,7 +9,9 @@ describe("Given a Navbar component", () => {
     test("Then it should display 5 anchors", () => {
       render(
         <BrowserRouter>
-          <Navbar />
+          <Provider store={store}>
+            <Navbar />
+          </Provider>
         </BrowserRouter>
       );
 

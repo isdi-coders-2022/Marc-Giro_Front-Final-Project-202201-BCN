@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const NavbarStyle = styled.nav`
   background-color: #335c6760;
@@ -34,6 +36,7 @@ const NavbarStyle = styled.nav`
 `;
 
 export const Navbar = (): JSX.Element => {
+  const { isLoggedIn } = useSelector((state: RootState) => state.usersReducer);
   return (
     <NavbarStyle>
       <ul>
@@ -43,22 +46,22 @@ export const Navbar = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to="/createMovie">
+          <Link to={isLoggedIn ? "/createMovie" : "/login"}>
             <FontAwesomeIcon icon={faCirclePlus} />
           </Link>
         </li>
         <li>
-          <Link to="/watchlist">
+          <Link to={isLoggedIn ? "/watchlist" : "/login"}>
             <FontAwesomeIcon icon={faBookmark} />
           </Link>
         </li>
         <li>
-          <Link to="/ratings">
+          <Link to={isLoggedIn ? "/ratings" : "/login"}>
             <FontAwesomeIcon icon={faStar} />
           </Link>
         </li>
         <li>
-          <Link to="/register">
+          <Link to={isLoggedIn ? "/logout" : "/register"}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </li>
