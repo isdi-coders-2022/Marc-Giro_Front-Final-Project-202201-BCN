@@ -3,11 +3,13 @@ import {
   AddLocalMovieActionInterface,
   CreatedMovie,
   DeleteLocalMovieActionInterface,
+  loadLocalMovieDetailActionInterface,
   LoadLocalMoviesActionInterface,
 } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
   deleteLocalMovieAction,
+  loadLocalMovieDetailAction,
   loadLocalMoviesAction,
   updateLocalMovieAction,
 } from "../actions/actionsCreators";
@@ -42,6 +44,17 @@ export const deleteLocalMovieThunk =
     if (responseMessage.message === "Movie deleted") {
       dispatch(deleteLocalMovieAction(movieId));
     }
+  };
+
+export const loadLocalMovieDetailThunk =
+  (id: string) =>
+  async (
+    dispatch: ThunkDispatch<void, unknown, loadLocalMovieDetailActionInterface>
+  ) => {
+    const response = await fetch(`${url}movies/${id}`);
+    const detailedMovie = await response.json();
+
+    dispatch(loadLocalMovieDetailAction(detailedMovie));
   };
 
 export const addLocalMovieThunk =
