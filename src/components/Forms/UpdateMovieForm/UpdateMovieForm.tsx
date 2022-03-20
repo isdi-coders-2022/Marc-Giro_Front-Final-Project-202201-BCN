@@ -1,77 +1,10 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
+import { updateLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
 import { useNavigate } from "react-router-dom";
-
-export const MovieFormStyle = styled.div`
-  width: 90vw;
-  display: flex;
-  justify-content: center;
-  & form {
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 800px) {
-      align-items: center;
-    }
-
-    & div {
-      display: flex;
-      flex-direction: column;
-      @media (min-width: 800px) {
-        display: flex;
-        flex-direction: row;
-      }
-
-      & div {
-        @media (min-width: 800px) {
-          display: flex;
-          flex-direction: column;
-        }
-      }
-    }
-    & label {
-      margin-top: 20px;
-      margin-bottom: 4px;
-      @media (min-width: 800px) {
-        margin-left: 40px;
-        margin-right: 40px;
-      }
-    }
-    & input {
-      border: none;
-      border-radius: 10px;
-      background-color: #83c5be25;
-      @media (min-width: 800px) {
-        margin-left: 40px;
-        margin-right: 40px;
-        width: 300px;
-        height: 20px;
-      }
-    }
-    & textarea {
-      border-radius: 10px;
-      border: none;
-      background-color: #83c5be25;
-      @media (min-width: 800px) {
-        margin-left: 40px;
-        margin-right: 40px;
-        width: 300px;
-      }
-    }
-    & select {
-      border: none;
-      background-color: #83c5be25;
-      border-radius: 10px;
-      @media (min-width: 800px) {
-        margin-left: 40px;
-        margin-right: 40px;
-        width: 300px;
-      }
-    }
-  }
-`;
+import { MovieFormStyle } from "../MovieForm/MovieForm";
+import { MovieDetails } from "../../../interfaces/Movie";
 
 enum TypeOptions {
   Movie = "Movie",
@@ -91,7 +24,12 @@ interface IFormInput {
   Poster?: any;
 }
 
-const MovieForm = () => {
+interface UpdateMovieFormProps {
+  movieId: string;
+  movieToUpdate: Promise<any>;
+}
+
+const UpdateMovieForm = ({ movieId, movieToUpdate }: UpdateMovieFormProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -100,7 +38,7 @@ const MovieForm = () => {
     if (data.Poster) {
       data.Poster = data.Poster[0];
     }
-    dispatch(addLocalMovieThunk(data));
+    dispatch(updateLocalMovieThunk(data, movieId));
     navigate("/");
   };
   const watchRequiredFields = watch([
@@ -228,4 +166,4 @@ const MovieForm = () => {
   );
 };
 
-export default MovieForm;
+export default UpdateMovieForm;

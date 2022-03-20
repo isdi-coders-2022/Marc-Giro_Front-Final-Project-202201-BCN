@@ -13,7 +13,7 @@ import {
 } from "../actions/actionsCreators";
 import { RootState } from "../store";
 
-const url = process.env.REACT_APP_API_URL;
+export const url = process.env.REACT_APP_API_URL;
 
 export const loadLocalMoviesThunk =
   (search: string) =>
