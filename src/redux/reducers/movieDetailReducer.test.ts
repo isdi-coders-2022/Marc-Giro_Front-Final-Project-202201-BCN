@@ -30,7 +30,7 @@ describe("Given an movieDetailReducer function", () => {
   });
 
   describe("When it is called with a non existing action with a movie", () => {
-    test("then it should return the movie as the new state", () => {
+    test("then it should return the currentState as the new state", () => {
       const currentState: MovieDetails = {} as MovieDetails;
       const movie: MovieDetails = {
         Title: "Hola",
