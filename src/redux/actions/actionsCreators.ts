@@ -4,6 +4,8 @@ import {
   LoadLocalMoviesActionInterface,
   AddLocalMovieActionInterface,
   SomeActionInterface,
+  MovieDetails,
+  loadLocalMovieDetailActionInterface,
 } from "../../interfaces/Movie";
 import {
   loginActionInterface,
@@ -71,5 +73,12 @@ export const updateLocalMovieAction = (
   movie: Movie
 ): AddLocalMovieActionInterface => ({
   type: actionsTypes.updateLocalMovie,
+  movie,
+});
+
+export const loadLocalMovieDetailAction = (
+  movie: MovieDetails
+): loadLocalMovieDetailActionInterface => ({
+  type: actionsTypes.loadLocalMovieDetail,
   movie,
 });
