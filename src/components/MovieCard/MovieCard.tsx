@@ -3,10 +3,14 @@ import { Movie } from "../../interfaces/Movie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { deleteLocalMovieThunk } from "../../redux/thunks/moviesThunk";
+import {
+  deleteLocalMovieThunk,
+  loadLocalMovieDetailThunk,
+} from "../../redux/thunks/moviesThunk";
 import DeleteIcon from "../Icons/DeleteIcon";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const MovieCardStyle = styled.li`
   background-color: #83c5be30;
@@ -76,9 +80,15 @@ export const MovieCard = ({
   isLoggedIn,
 }: MovieCardProps): JSX.Element => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteMovie = (_id: any) => {
     dispatch(deleteLocalMovieThunk(_id));
+  };
+
+  const movieDetail = (_id: any) => {
+    dispatch(loadLocalMovieDetailThunk(_id));
+    navigate(`/movies/${_id}`);
   };
 
   let newTitle;
@@ -89,7 +99,13 @@ export const MovieCard = ({
   }
   return (
     <MovieCardStyle>
-      <img src={Poster} alt={Title} />
+      <img
+        onClick={() => {
+          movieDetail(_id);
+        }}
+        src={Poster}
+        alt={Title}
+      />
       <div>
         <h2>{newTitle}</h2>
         <p>{Year}</p>
