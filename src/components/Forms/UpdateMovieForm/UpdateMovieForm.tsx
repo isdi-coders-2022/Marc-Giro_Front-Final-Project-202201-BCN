@@ -4,7 +4,6 @@ import { updateLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
 import { useNavigate } from "react-router-dom";
 import { MovieFormStyle } from "../MovieForm/MovieForm";
-import { MovieDetails } from "../../../interfaces/Movie";
 
 enum TypeOptions {
   Movie = "Movie",

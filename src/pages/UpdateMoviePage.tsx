@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
-import MovieForm from "../components/Forms/MovieForm/MovieForm";
 import UpdateMovieForm from "../components/Forms/UpdateMovieForm/UpdateMovieForm";
-import { MovieDetails } from "../interfaces/Movie";
 import { url } from "../redux/thunks/moviesThunk";
 
 const UpdateMovie = () => {
