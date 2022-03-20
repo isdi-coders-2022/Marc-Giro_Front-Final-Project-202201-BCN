@@ -37,6 +37,14 @@ const moviesReducer = (
       ];
       break;
 
+    case actionsTypes.updateLocalMovie:
+      newMovies = currentMovies.map((movie) =>
+        movie._id === (action as AddLocalMovieActionInterface).movie._id
+          ? (action as AddLocalMovieActionInterface).movie
+          : movie
+      );
+      break;
+
     default:
       newMovies = [...currentMovies];
       break;

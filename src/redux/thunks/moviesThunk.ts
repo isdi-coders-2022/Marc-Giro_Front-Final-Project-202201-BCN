@@ -9,10 +9,11 @@ import {
   addLocalMovieAction,
   deleteLocalMovieAction,
   loadLocalMoviesAction,
+  updateLocalMovieAction,
 } from "../actions/actionsCreators";
 import { RootState } from "../store";
 
-const url = process.env.REACT_APP_API_URL;
+export const url = process.env.REACT_APP_API_URL;
 
 export const loadLocalMoviesThunk =
   (search: string) =>
@@ -71,5 +72,37 @@ export const addLocalMovieThunk =
 
     if (responseCreateMovie.message === "Movie created") {
       dispatch(addLocalMovieAction(responseCreateMovie.movie));
+    }
+  };
+
+export const updateLocalMovieThunk =
+  (movie: CreatedMovie, id: any) =>
+  async (
+    dispatch: ThunkDispatch<RootState, void, AddLocalMovieActionInterface>
+  ): Promise<void> => {
+    const data = new FormData();
+    data.append("Title", movie.Title);
+    data.append("Year", movie.Year);
+    data.append("Genre", movie.Genre);
+    data.append("Runtime", movie.Runtime);
+    data.append("Type", movie.Type);
+    data.append("Director", movie.Director);
+    data.append("Writer", movie.Writer);
+    data.append("Actors", movie.Actors);
+    data.append("Plot", movie.Plot);
+    data.append("Poster", movie.Poster);
+
+    const response = await fetch(`${url}movies/${id}`, {
+      method: "PUT",
+      body: data,
+      headers: {
+        authorization: JSON.parse(localStorage.userToken).token,
+      },
+    });
+
+    const responseUpdateMovie = await response.json();
+
+    if (responseUpdateMovie.message.includes("successfully")) {
+      dispatch(updateLocalMovieAction(responseUpdateMovie.movie));
     }
   };

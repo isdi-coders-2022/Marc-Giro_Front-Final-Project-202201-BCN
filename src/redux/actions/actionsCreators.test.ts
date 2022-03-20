@@ -9,6 +9,7 @@ import {
   registerFailAction,
   registerSuccessAction,
   setMessageAction,
+  updateLocalMovieAction,
 } from "./actionsCreators";
 
 describe("Given a load local movies action", () => {
@@ -67,6 +68,28 @@ describe("Given an add local movie action", () => {
       };
 
       const action = addLocalMovieAction(movie);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given an update local movie action", () => {
+  describe("When it receives a movie", () => {
+    test("Then it should return the action and the movie", () => {
+      const movie: Movie = {
+        Title: "The Leftovers",
+        Year: "2014–2017",
+        Type: "series",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BNTE3MDc1MjY4NV5BMl5BanBnXkFtZTgwMDg4MjQ4MTE@._V1_SX300.jpg",
+      };
+      const expectedAction = {
+        type: "update-local-movie",
+        movie,
+      };
+
+      const action = updateLocalMovieAction(movie);
 
       expect(action).toEqual(expectedAction);
     });
