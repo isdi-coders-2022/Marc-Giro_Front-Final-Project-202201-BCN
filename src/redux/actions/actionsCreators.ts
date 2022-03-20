@@ -66,3 +66,10 @@ export const loginFailAction = (): SomeActionInterface => ({
 export const logoutAction = () => ({
   type: actionsTypes.logout,
 });
+
+export const updateLocalMovieAction = (
+  movie: Movie
+): AddLocalMovieActionInterface => ({
+  type: actionsTypes.updateLocalMovie,
+  movie,
+});
