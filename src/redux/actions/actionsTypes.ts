@@ -10,4 +10,5 @@ export const actionsTypes = {
   logout: "logout",
   setMessage: "set-message",
   clearMessage: "clear-message",
+  loadLocalMovieDetail: "load-local-movie-detail",
 };
