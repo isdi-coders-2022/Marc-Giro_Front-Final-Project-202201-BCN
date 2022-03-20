@@ -159,4 +159,34 @@ describe("Given an moviesReducer function", () => {
       expect(newState).toEqual(allMovies);
     });
   });
+
+  describe("When it is called with an updateLocalMovie action with a movie", () => {
+    test("Then it should update the movie with the new info", () => {
+      const movieToUpdate = [
+        {
+          Title: "Bon dia",
+          Year: "1999",
+          Poster: "foto",
+          Type: "movie",
+          _id: "6228796b92d232f647b99042",
+        },
+      ];
+      const updatedMovie = {
+        Title: "Nou Bon dia",
+        Year: "1999",
+        Poster: "foto",
+        Type: "movie",
+        _id: "6228796b92d232f647b99042",
+      };
+
+      const updateAction = {
+        type: "update-local-movie",
+        movie: updatedMovie,
+      };
+
+      const newMovies = moviesReducer(movieToUpdate, updateAction);
+
+      expect(newMovies).toContain(updatedMovie);
+    });
+  });
 });
