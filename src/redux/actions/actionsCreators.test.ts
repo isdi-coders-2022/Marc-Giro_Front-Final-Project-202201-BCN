@@ -1,8 +1,9 @@
-import { Movie } from "../../interfaces/Movie";
+import { Movie, MovieDetails } from "../../interfaces/Movie";
 import {
   addLocalMovieAction,
   clearMessageAction,
   deleteLocalMovieAction,
+  loadLocalMovieDetailAction,
   loadLocalMoviesAction,
   loginFailAction,
   loginSuccessAction,
@@ -90,6 +91,34 @@ describe("Given an update local movie action", () => {
       };
 
       const action = updateLocalMovieAction(movie);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a load local movie detail action", () => {
+  describe("When it receives a movie", () => {
+    test("Then it should return the action and the movie", () => {
+      const movie: MovieDetails = {
+        Title: "The Leftovers",
+        Year: "2014–2017",
+        Type: "series",
+        Genre: "drama",
+        Runtime: 200,
+        Actors: "Any actors",
+        Director: "Any director",
+        Plot: "Great movie",
+        Writer: "Any writer",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BNTE3MDc1MjY4NV5BMl5BanBnXkFtZTgwMDg4MjQ4MTE@._V1_SX300.jpg",
+      };
+      const expectedAction = {
+        type: "load-local-movie-detail",
+        movie,
+      };
+
+      const action = loadLocalMovieDetailAction(movie);
 
       expect(action).toEqual(expectedAction);
     });
