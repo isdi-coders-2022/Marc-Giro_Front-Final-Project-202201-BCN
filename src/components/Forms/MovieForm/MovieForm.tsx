@@ -1,9 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CreatedMovie, MovieDetails } from "../../../interfaces/Movie";
 
 export const MovieFormStyle = styled.div`
@@ -98,9 +97,11 @@ interface MovieFormProps {
 }
 
 const MovieForm = ({ thunk, movieToUpdate }: MovieFormProps): JSX.Element => {
+  const { movieId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const blankfields = movieToUpdate ?? {};
+  const text = movieToUpdate ? "Update" : "Create";
 
   const { register, watch, handleSubmit } = useForm<IFormInput>({
     defaultValues: blankfields,
@@ -109,7 +110,8 @@ const MovieForm = ({ thunk, movieToUpdate }: MovieFormProps): JSX.Element => {
     if (data.Poster) {
       data.Poster = data.Poster[0];
     }
-    dispatch(addLocalMovieThunk(data));
+    movieToUpdate ? dispatch(thunk(data, movieId)) : dispatch(thunk(data));
+
     navigate("/");
   };
   const watchRequiredFields = watch([
@@ -231,7 +233,7 @@ const MovieForm = ({ thunk, movieToUpdate }: MovieFormProps): JSX.Element => {
           </div>
         </div>
 
-        {!isInvalid ? <FormButton text="Create your movie" /> : <></>}
+        {!isInvalid ? <FormButton text={text} /> : <></>}
       </form>
     </MovieFormStyle>
   );

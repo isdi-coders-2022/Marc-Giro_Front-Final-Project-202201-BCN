@@ -24,11 +24,15 @@ const UpdateMoviePage = () => {
   return (
     <>
       <CreateMoviePageStyle>
-        <h2>Create your Movie</h2>
-        <MovieForm
-          thunk={updateLocalMovieThunk}
-          movieToUpdate={movieToUpdate}
-        />
+        <h2>Update your Movie</h2>
+        {movieToUpdate.Actors ? (
+          <MovieForm
+            thunk={updateLocalMovieThunk}
+            movieToUpdate={movieToUpdate}
+          />
+        ) : (
+          <></>
+        )}
       </CreateMoviePageStyle>
     </>
   );

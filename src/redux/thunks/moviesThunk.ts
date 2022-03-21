@@ -115,8 +115,7 @@ export const updateLocalMovieThunk =
     });
 
     const responseUpdateMovie = await response.json();
-
     if (responseUpdateMovie.message.includes("successfully")) {
-      dispatch(updateLocalMovieAction(responseUpdateMovie.movie));
+      dispatch(updateLocalMovieAction(responseUpdateMovie.movie.updatedMovie));
     }
   };
