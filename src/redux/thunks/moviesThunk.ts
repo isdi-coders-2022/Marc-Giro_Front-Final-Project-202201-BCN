@@ -36,7 +36,8 @@ export const deleteLocalMovieThunk =
     const response = await fetch(`${url}movies/${movieId}`, {
       method: "DELETE",
       headers: {
-        authorization: JSON.parse(localStorage.userToken).token,
+        authorization: JSON.parse(localStorage.getItem("userToken") as string)
+          .token,
       },
     });
     const responseMessage = await response.json();

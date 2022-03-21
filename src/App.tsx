@@ -7,6 +7,7 @@ import { CreateMoviePage } from "./pages/CreateMoviePage";
 import { RegisterUserPage } from "./pages/RegisterUserPage";
 import { LoginUserPage } from "./pages/LoginUserPage";
 import { LogOutPage } from "./pages/LogOutPage";
+import { MovieDetailPage } from "./pages/MovieDetailPage";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/logout" element={<LogOutPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/createmovie" element={<CreateMoviePage />} />
-        <Route path="/movie/:id" element={"placeholder <MoviePage />"} />
+        <Route path="/movies/:movieId" element={<MovieDetailPage />} />
         <Route path="/watchlist" element={"placeholder <WatchlistPage />"} />
         <Route path="/ratings" element={"placeholder <RatingsPage />"} />
         <Route path="*" element={"placeholder <NotFoundPage />"} />

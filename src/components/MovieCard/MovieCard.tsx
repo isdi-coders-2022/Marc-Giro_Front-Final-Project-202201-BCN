@@ -3,10 +3,7 @@ import { Movie } from "../../interfaces/Movie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import {
-  deleteLocalMovieThunk,
-  loadLocalMovieDetailThunk,
-} from "../../redux/thunks/moviesThunk";
+import { deleteLocalMovieThunk } from "../../redux/thunks/moviesThunk";
 import DeleteIcon from "../Icons/DeleteIcon";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -87,7 +84,6 @@ export const MovieCard = ({
   };
 
   const movieDetail = (_id: any) => {
-    dispatch(loadLocalMovieDetailThunk(_id));
     navigate(`/movies/${_id}`);
   };
 
