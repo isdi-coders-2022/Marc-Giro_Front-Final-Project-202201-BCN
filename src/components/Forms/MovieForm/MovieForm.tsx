@@ -107,7 +107,7 @@ const MovieForm = ({ thunk, movieToUpdate }: MovieFormProps): JSX.Element => {
     defaultValues: blankfields,
   });
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    if (data.Poster) {
+    if (data.Poster && movieToUpdate?.Poster !== data.Poster) {
       data.Poster = data.Poster[0];
     }
     movieToUpdate ? dispatch(thunk(data, movieId)) : dispatch(thunk(data));

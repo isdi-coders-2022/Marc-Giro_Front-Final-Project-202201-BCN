@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../../redux/store";
+import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import MovieForm from "./MovieForm";
 
 describe("Given a MovieForm component", () => {
@@ -10,7 +11,7 @@ describe("Given a MovieForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <MovieForm />
+            <MovieForm thunk={addLocalMovieThunk} />
           </Provider>
         </BrowserRouter>
       );
