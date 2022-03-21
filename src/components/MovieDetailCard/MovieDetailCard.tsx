@@ -33,21 +33,29 @@ const MovieDetailCardStyle = styled.div`
     }
 
     & div {
-      width: 180px;
+      width: 192px;
       height: 270px;
       background-color: #83c5be30;
-      & h2 {
+      & h3 {
+        margin-left: 10px;
+        margin-right: 5px;
         @media (min-width: 800px) {
           display: flex;
         }
       }
 
       & p {
+        margin-left: 10px;
+        margin-right: 5px;
       }
       & .plot-desktop {
+        margin-left: 10px;
+        margin-right: 5px;
         display: none;
         @media (min-width: 800px) {
           display: flex;
+          margin-left: 10px;
+          margin-right: 5px;
         }
       }
     }
@@ -55,12 +63,19 @@ const MovieDetailCardStyle = styled.div`
 
   & .bottom-section {
     background-color: #335c6710;
-    width: 360px;
+    width: 372px;
   }
   & .director-writer-actors-plot {
     & p {
+      margin-left: 10px;
+      margin-right: 5px;
+      & span {
+        font-weight: bold;
+      }
     }
     & .plot-mobile {
+      margin-left: 10px;
+      margin-right: 5px;
       @media (min-width: 800px) {
         display: none;
       }
@@ -70,10 +85,11 @@ const MovieDetailCardStyle = styled.div`
   & .iconsLine {
     width: 215px;
     margin-top: 5px;
-    margin-left: 12px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    width: 95%;
+    justify-content: flex-end;
 
     & i {
       display: flex;
@@ -139,44 +155,50 @@ export const MovieDetailCard = ({
       </div>
       <div className="bottom-section">
         <div className="director-writer-actors-plot">
-          <p>Director: {Director}</p>
-          <p>Writer: {Writer}</p>
-          <p>Actors: {Actors}</p>
-          <p className="plot-mobile">Plot: {Plot}</p>
+          <p>
+            <span>Director:</span> {Director}
+          </p>
+          <p>
+            <span>Writer:</span> {Writer}
+          </p>
+          <p>
+            <span>Actors:</span> {Actors}
+          </p>
+          <p className="plot-mobile">
+            <span>Plot:</span> {Plot}
+          </p>
         </div>
-        <div>
-          {isLoggedIn ? (
-            <div className="iconsLine">
-              <i role="button" onClick={() => {}}>
-                <FontAwesomeIcon icon={faPenToSquare} />
-              </i>
+        {isLoggedIn ? (
+          <div className="iconsLine">
+            <i role="button" onClick={() => {}}>
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </i>
 
-              <i role="button" onClick={() => {}}>
-                <FontAwesomeIcon icon={faStar} />
-              </i>
+            <i role="button" onClick={() => {}}>
+              <FontAwesomeIcon icon={faStar} />
+            </i>
 
-              <i role="button" onClick={() => {}}>
-                <FontAwesomeIcon icon={faBookmark} />
-              </i>
+            <i role="button" onClick={() => {}}>
+              <FontAwesomeIcon icon={faBookmark} />
+            </i>
 
-              <i>
-                <DeleteIcon
-                  onClick={() => {
-                    deleteMovie(_id);
-                    toast.success("Movie deleted", {
-                      position: toast.POSITION.BOTTOM_RIGHT,
-                      autoClose: 500,
-                      theme: "colored",
-                      hideProgressBar: true,
-                    });
-                  }}
-                />
-              </i>
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
+            <i>
+              <DeleteIcon
+                onClick={() => {
+                  deleteMovie(_id);
+                  toast.success("Movie deleted", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 500,
+                    theme: "colored",
+                    hideProgressBar: true,
+                  });
+                }}
+              />
+            </i>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </MovieDetailCardStyle>
   );

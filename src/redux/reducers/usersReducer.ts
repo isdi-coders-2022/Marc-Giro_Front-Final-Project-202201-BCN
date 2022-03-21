@@ -2,7 +2,7 @@ import { actionsTypes } from "../actions/actionsTypes";
 import { SomeActionInterface } from "../../interfaces/Movie";
 import { loginActionInterface } from "../../interfaces/User";
 
-const user = JSON.parse(localStorage.getItem("user") as string);
+const user = JSON.parse(localStorage.userToken).token;
 const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
