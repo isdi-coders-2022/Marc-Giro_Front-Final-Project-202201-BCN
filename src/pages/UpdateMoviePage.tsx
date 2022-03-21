@@ -1,23 +1,37 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import UpdateMovieForm from "../components/Forms/UpdateMovieForm/UpdateMovieForm";
-import { url } from "../redux/thunks/moviesThunk";
+import MovieForm from "../components/Forms/MovieForm/MovieForm";
+import { RootState } from "../redux/store";
+import {
+  loadLocalMovieDetailThunk,
+  updateLocalMovieThunk,
+} from "../redux/thunks/moviesThunk";
+import { CreateMoviePageStyle } from "./CreateMoviePage";
 
-const UpdateMovie = () => {
+const UpdateMoviePage = () => {
   const { movieId } = useParams();
+  const dispatch = useDispatch();
 
-  const movie = async () => {
-    const response = await fetch(`${url}movies/${movieId}`);
-    const movieToUpdate = await response.json();
-    return movieToUpdate;
-  };
-  const movieToUpdate = movie();
+  const movieToUpdate = useSelector(
+    (state: RootState) => state.movieDetailReducer
+  );
+
+  useEffect(() => {
+    dispatch(loadLocalMovieDetailThunk(movieId as string));
+  }, [dispatch, movieId]);
 
   return (
-    <UpdateMovieForm
-      movieId={movieId as string}
-      movieToUpdate={movieToUpdate as Promise<any>}
-    />
+    <>
+      <CreateMoviePageStyle>
+        <h2>Create your Movie</h2>
+        <MovieForm
+          thunk={updateLocalMovieThunk}
+          movieToUpdate={movieToUpdate}
+        />
+      </CreateMoviePageStyle>
+    </>
   );
 };
 
-export default UpdateMovie;
+export default UpdateMoviePage;

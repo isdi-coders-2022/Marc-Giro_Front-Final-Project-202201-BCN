@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { addLocalMovieThunk } from "../../../redux/thunks/moviesThunk";
 import FormButton from "../../Buttons/FormButton";
 import { useNavigate } from "react-router-dom";
+import { CreatedMovie, MovieDetails } from "../../../interfaces/Movie";
 
 export const MovieFormStyle = styled.div`
   width: 90vw;
@@ -91,11 +92,19 @@ interface IFormInput {
   Poster?: any;
 }
 
-const MovieForm = () => {
+interface MovieFormProps {
+  thunk: (movie: CreatedMovie, id?: string) => any;
+  movieToUpdate?: MovieDetails;
+}
+
+const MovieForm = ({ thunk, movieToUpdate }: MovieFormProps): JSX.Element => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const blankfields = movieToUpdate ?? {};
 
-  const { register, watch, handleSubmit } = useForm<IFormInput>();
+  const { register, watch, handleSubmit } = useForm<IFormInput>({
+    defaultValues: blankfields,
+  });
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     if (data.Poster) {
       data.Poster = data.Poster[0];

@@ -7,6 +7,7 @@ import { CreateMoviePage } from "./pages/CreateMoviePage";
 import { RegisterUserPage } from "./pages/RegisterUserPage";
 import { LoginUserPage } from "./pages/LoginUserPage";
 import { LogOutPage } from "./pages/LogOutPage";
+import UpdateMoviePage from "./pages/UpdateMoviePage";
 import { MovieDetailPage } from "./pages/MovieDetailPage";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/createmovie" element={<CreateMoviePage />} />
         <Route path="/movies/:movieId" element={<MovieDetailPage />} />
+        <Route path="/updatemovie/:movieId" element={<UpdateMoviePage />} />
         <Route path="/watchlist" element={"placeholder <WatchlistPage />"} />
         <Route path="/ratings" element={"placeholder <RatingsPage />"} />
         <Route path="*" element={"placeholder <NotFoundPage />"} />
