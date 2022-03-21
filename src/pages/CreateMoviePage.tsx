@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import MovieForm from "../components/Forms/MovieForm/MovieForm";
+import { addLocalMovieThunk } from "../redux/thunks/moviesThunk";
 
-const CreateMoviePageStyle = styled.div`
+export const CreateMoviePageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +23,7 @@ export const CreateMoviePage = (): JSX.Element => {
     <>
       <CreateMoviePageStyle>
         <h2>Create your Movie</h2>
-        <MovieForm />
+        <MovieForm thunk={addLocalMovieThunk} />
       </CreateMoviePageStyle>
     </>
   );

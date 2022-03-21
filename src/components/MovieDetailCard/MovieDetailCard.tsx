@@ -141,6 +141,10 @@ export const MovieDetailCard = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const updateMovie = () => {
+    navigate(`/updatemovie/${_id}`);
+  };
+
   const deleteMovie = (_id: any) => {
     dispatch(deleteLocalMovieThunk(_id));
     navigate("/");
@@ -182,7 +186,12 @@ export const MovieDetailCard = ({
         </div>
         {isLoggedIn ? (
           <div className="iconsLine">
-            <i role="button" onClick={() => {}}>
+            <i
+              role="button"
+              onClick={() => {
+                updateMovie();
+              }}
+            >
               <FontAwesomeIcon icon={faPenToSquare} />
             </i>
 
