@@ -14,13 +14,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const MovieDetailCardStyle = styled.div`
-  width: 90vw;
+  width: 372px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 10%;
   @media (min-width: 800px) {
-    margin-right: 50px;
+    width: 713px;
   }
 
   & .image-title-genre-plot {
@@ -30,12 +30,20 @@ const MovieDetailCardStyle = styled.div`
       width: 180px;
       height: 270px;
       object-fit: cover;
+      @media (min-width: 800px) {
+        width: 250px;
+        height: 375px;
+      }
     }
 
     & div {
       width: 192px;
       height: 270px;
       background-color: #83c5be30;
+      @media (min-width: 800px) {
+        height: 375px;
+        width: 463px;
+      }
       & h3 {
         margin-left: 10px;
         margin-right: 5px;
@@ -64,6 +72,10 @@ const MovieDetailCardStyle = styled.div`
   & .bottom-section {
     background-color: #335c6710;
     width: 372px;
+    @media (min-width: 800px) {
+      background-color: #335c6710;
+      width: 713px;
+    }
   }
   & .director-writer-actors-plot {
     & p {
