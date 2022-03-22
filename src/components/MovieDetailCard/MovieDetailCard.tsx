@@ -119,7 +119,7 @@ const MovieDetailCardStyle = styled.div`
 `;
 interface MovieDetailCardProps {
   movie: MovieDetails;
-  isLoggedIn: Boolean;
+  isLoggedIn: boolean;
 }
 
 export const MovieDetailCard = ({
