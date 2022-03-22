@@ -18,7 +18,6 @@ export const LogOutPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state: RootState) => state.usersReducer);
-  console.log(isLoggedIn);
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/");
