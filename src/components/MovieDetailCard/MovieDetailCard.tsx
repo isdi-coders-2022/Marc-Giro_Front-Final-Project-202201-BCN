@@ -151,8 +151,8 @@ export const MovieDetailCard = ({
   };
 
   let newTitle;
-  if (Title.length > 19) {
-    newTitle = Title.slice(0, 19) + "...";
+  if (Title.length > 50) {
+    newTitle = Title.slice(0, 50) + "...";
   } else {
     newTitle = Title;
   }

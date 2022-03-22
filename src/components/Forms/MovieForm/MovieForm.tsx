@@ -40,6 +40,7 @@ export const MovieFormStyle = styled.div`
       }
     }
     & input {
+      padding: 5px;
       border: none;
       border-radius: 10px;
       background-color: #83c5be25;

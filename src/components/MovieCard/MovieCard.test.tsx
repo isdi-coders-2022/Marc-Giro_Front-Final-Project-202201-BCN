@@ -45,7 +45,7 @@ describe("Given a MovieCard component", () => {
       );
 
       const title = screen.getByRole("heading", {
-        name: "HelloHelloHelloHell...",
+        name: "HelloHelloHell...",
       });
 
       expect(title).toBeInTheDocument();
