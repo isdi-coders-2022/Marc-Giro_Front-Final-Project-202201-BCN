@@ -24,7 +24,7 @@ const mockState2 = {
 
 describe("Given a LogOutPage component", () => {
   describe("When the user is logged in", () => {
-    test.only("Then a navigate must be invoked", () => {
+    test("Then a navigate must be invoked", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
