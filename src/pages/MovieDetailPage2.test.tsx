@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../redux/store";
@@ -21,6 +21,8 @@ describe("Given a MovieDetailPage component", () => {
           </Provider>
         </BrowserRouter>
       );
+      const title = screen.queryByRole("heading");
+      expect(title).not.toBeInTheDocument();
     });
   });
 });

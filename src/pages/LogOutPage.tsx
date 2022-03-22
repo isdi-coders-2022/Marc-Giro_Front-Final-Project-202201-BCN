@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -17,22 +18,25 @@ export const LogOutPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state: RootState) => state.usersReducer);
+  console.log(isLoggedIn);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const logOut = () => {
     localStorage.clear();
     dispatch(clearMessageAction());
     dispatch(logoutAction());
-    setTimeout(() => {
-      navigate("/login");
-    }, 1000);
+    navigate("/login");
   };
 
-  const toRender = isLoggedIn ? (
-    <LogOutPageStyle>
-      <LogOutButton actionOnClick={logOut} text="Log Out" />
-    </LogOutPageStyle>
-  ) : (
-    <></>
+  return (
+    <>
+      <LogOutPageStyle>
+        <LogOutButton actionOnClick={logOut} text="Log Out" />
+      </LogOutPageStyle>
+    </>
   );
-  return <>{toRender}</>;
 };
