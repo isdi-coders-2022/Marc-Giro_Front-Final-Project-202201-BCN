@@ -64,6 +64,7 @@ const MovieCardStyle = styled.li`
   & img {
     width: 80px;
     object-fit: cover;
+    cursor: pointer;
   }
 `;
 interface MovieCardProps {
@@ -88,8 +89,8 @@ export const MovieCard = ({
   };
 
   let newTitle;
-  if (Title.length > 19) {
-    newTitle = Title.slice(0, 19) + "...";
+  if (Title.length > 14) {
+    newTitle = Title.slice(0, 14) + "...";
   } else {
     newTitle = Title;
   }

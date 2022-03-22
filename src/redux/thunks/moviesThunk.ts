@@ -105,7 +105,6 @@ export const updateLocalMovieThunk =
     data.append("Actors", movie.Actors);
     data.append("Plot", movie.Plot);
     data.append("Poster", movie.Poster);
-    console.log(movie.Poster);
     const response = await fetch(`${url}movies/${id}`, {
       method: "PUT",
       body: data,
