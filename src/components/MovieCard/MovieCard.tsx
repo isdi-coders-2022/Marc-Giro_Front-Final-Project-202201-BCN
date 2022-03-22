@@ -69,7 +69,7 @@ const MovieCardStyle = styled.li`
 `;
 interface MovieCardProps {
   movie: Movie;
-  isLoggedIn: Boolean;
+  isLoggedIn: boolean;
 }
 
 toast.configure();
