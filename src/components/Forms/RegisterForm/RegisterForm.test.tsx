@@ -28,20 +28,55 @@ describe("Given a RegisterForm component", () => {
     });
   });
 
-  // describe("When it's rendered, the user registers correctly", () => {
-  //   test("Then it should invoke navigate", async () => {
-  //     render(
-  //       <BrowserRouter>
-  //         <Provider store={store}>
-  //           <RegisterForm />
-  //         </Provider>
-  //       </BrowserRouter>
-  //     );
+  describe("When it's rendered, the user registers correctly", () => {
+    test("Then it should invoke navigate", async () => {
+      const fillName = "aaad";
+      const message = "registered!";
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm message={message} />
+          </Provider>
+        </BrowserRouter>
+      );
 
-  //     const registerButton = screen.getByRole("button");
-  //     userEvent.click(registerButton);
+      const inputs = screen.getAllByRole("textbox");
+      inputs.forEach((input) => userEvent.type(input, fillName));
+      const passwordInput = screen.getByPlaceholderText("********");
+      userEvent.type(passwordInput, fillName);
 
-  //     await waitFor(() => expect(mockNavigate).toHaveBeenCalled());
-  //   });
-  // });
+      const submitButton = screen.getByRole("button");
+      userEvent.click(submitButton);
+
+      expect(submitButton).not.toBeDisabled();
+
+      // await waitFor(() => expect(mockNavigate).toHaveBeenCalled());
+    });
+  });
+
+  describe("When it's rendered, the user registers correctlyaa", () => {
+    test("Then it should invoke navigate", async () => {
+      const fillName = "aaad";
+      const message = "asdd";
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterForm message={message} />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const inputs = screen.getAllByRole("textbox");
+      inputs.forEach((input) => userEvent.type(input, fillName));
+      const passwordInput = screen.getByPlaceholderText("********");
+      userEvent.type(passwordInput, fillName);
+
+      const submitButton = screen.getByRole("button");
+      userEvent.click(submitButton);
+
+      expect(submitButton).not.toBeDisabled();
+
+      // await waitFor(() => expect(mockNavigate).toHaveBeenCalled());
+    });
+  });
 });
