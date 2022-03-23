@@ -28,7 +28,7 @@ export const RegisterUserPage = (): JSX.Element => {
     <>
       <RegisterUserPageStyle>
         <h2>Sign Up</h2>
-        <RegisterForm message={message} />
+        <RegisterForm message={message as string} />
         <p>
           Already have an account? <Link to={"/login"}>Log in</Link>
         </p>

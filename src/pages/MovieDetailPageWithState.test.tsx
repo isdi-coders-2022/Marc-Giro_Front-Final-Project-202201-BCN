@@ -4,11 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "../redux/store";
 import { MovieDetailPage } from "./MovieDetailPage";
 
-// jest.mock("react-router-dom", () => ({
-//   ...jest.requireActual("react-router-dom"),
-//   useParams: () => ({ id: "1" }),
-// }));
-
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useSelector: () => state[0],

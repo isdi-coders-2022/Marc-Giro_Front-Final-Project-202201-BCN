@@ -23,9 +23,9 @@ function App() {
         <Route path="/createmovie" element={<CreateMoviePage />} />
         <Route path="/movies/:movieId" element={<MovieDetailPage />} />
         <Route path="/updatemovie/:movieId" element={<UpdateMoviePage />} />
-        <Route path="/watchlist" element={"placeholder <WatchlistPage />"} />
-        <Route path="/ratings" element={"placeholder <RatingsPage />"} />
-        <Route path="*" element={"placeholder <NotFoundPage />"} />
+        <Route path="/watchlist" element={<HomePage />} />
+        <Route path="/ratings" element={<HomePage />} />
+        <Route path="*" element={"NOT FOUND"} />
       </Routes>
     </>
   );

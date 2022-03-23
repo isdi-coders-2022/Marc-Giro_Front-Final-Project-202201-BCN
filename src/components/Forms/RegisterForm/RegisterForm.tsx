@@ -60,7 +60,7 @@ interface IFormInput {
   password: string;
 }
 
-const RegisterForm = ({ message }: any) => {
+const RegisterForm = ({ message }: { message: string }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {

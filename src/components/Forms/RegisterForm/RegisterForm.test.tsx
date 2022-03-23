@@ -11,7 +11,7 @@ describe("Given a RegisterForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <RegisterForm />
+            <RegisterForm message="registered!" />
           </Provider>
         </BrowserRouter>
       );

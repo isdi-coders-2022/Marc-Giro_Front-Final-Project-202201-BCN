@@ -5,16 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/store";
 import { MovieCard } from "./MovieCard";
 
-// const mockLocalStorage = {
-//   getItem: () => ({
-//     id: "623377143f369c0ddfbbab8a",
-//     token:
-//       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcmMiLCJpZCI6IjYyMzM3NzE0M2YzNjljMGRkZmJiYWI4YSIsImlhdCI6MTY0Nzk3OTEzNn0.BCFJqHgpi3CyOe5_VYU-ujvUTze8fWhwIbPiniJi0GA",
-//     username: "marc",
-//   }),
-// };
-// Object.defineProperty(window, "localStorage", { value: mockLocalStorage });
-
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -116,20 +106,15 @@ describe("Given a MovieCard component", () => {
       );
       const movieToDelete = await screen.findByText("Hello");
       const trash = await screen.findByTitle("trash");
+
       userEvent.click(trash);
       let toastr;
+
       await waitFor(() => {
         expect(movieToDelete).toBeInTheDocument();
         toastr = screen.getByText("Movie deleted");
-        // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
         expect(toastr).toBeInTheDocument();
       });
-
-      // await waitForElementToBeRemoved(movieToDelete);
-
-      // await waitFor(() => expect(toastr).toBeInTheDocument());
-
-      // expect(trash).toBeInTheDocument();
     });
   });
 });
