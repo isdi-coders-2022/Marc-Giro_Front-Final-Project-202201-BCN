@@ -89,6 +89,7 @@ export const addLocalMovieThunk =
       },
     });
     console.log(response);
+    debugger;
     const responseCreateMovie = await response.json();
     console.log(responseCreateMovie, "RESPONSE CREATE MOVIE");
 
