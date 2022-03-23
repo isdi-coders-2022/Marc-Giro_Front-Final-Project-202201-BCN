@@ -1,15 +1,9 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../../redux/store";
 import RegisterForm from "./RegisterForm";
-
-const mockNavigate = jest.fn();
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
-}));
 
 describe("Given a RegisterForm component", () => {
   describe("When it's rendered", () => {
@@ -49,13 +43,11 @@ describe("Given a RegisterForm component", () => {
       userEvent.click(submitButton);
 
       expect(submitButton).not.toBeDisabled();
-
-      // await waitFor(() => expect(mockNavigate).toHaveBeenCalled());
     });
   });
 
-  describe("When it's rendered, the user registers correctlyaa", () => {
-    test("Then it should invoke navigate", async () => {
+  describe("When it's rendered, the user does not register correctly", () => {
+    test("Then it should not invoke navigate", async () => {
       const fillName = "aaad";
       const message = "asdd";
       render(
@@ -75,8 +67,6 @@ describe("Given a RegisterForm component", () => {
       userEvent.click(submitButton);
 
       expect(submitButton).not.toBeDisabled();
-
-      // await waitFor(() => expect(mockNavigate).toHaveBeenCalled());
     });
   });
 });

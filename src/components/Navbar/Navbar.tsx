@@ -46,22 +46,25 @@ export const Navbar = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to={isLoggedIn ? "/createMovie" : "/login"}>
+          <Link
+            title="create movie"
+            to={isLoggedIn ? "/createMovie" : "/login"}
+          >
             <FontAwesomeIcon icon={faCirclePlus} />
           </Link>
         </li>
         <li>
-          <Link to={isLoggedIn ? "/watchlist" : "/login"}>
+          <Link title="watchlist" to={isLoggedIn ? "/watchlist" : "/login"}>
             <FontAwesomeIcon icon={faBookmark} />
           </Link>
         </li>
         <li>
-          <Link to={isLoggedIn ? "/ratings" : "/login"}>
+          <Link title="ratings" to={isLoggedIn ? "/ratings" : "/login"}>
             <FontAwesomeIcon icon={faStar} />
           </Link>
         </li>
         <li>
-          <Link to={isLoggedIn ? "/logout" : "/register"}>
+          <Link title="user" to={isLoggedIn ? "/logout" : "/register"}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </li>

@@ -43,16 +43,6 @@ export const handlers = [
       );
     }
   ),
-  rest.post(`${process.env.REACT_APP_API_URL}movies`, (req, res, ctx) => {
-    console.log("Handler");
-    return res(
-      ctx.status(201),
-      ctx.json({
-        message: "successfully",
-        movie: { message: "successfully", movie: "hola" },
-      })
-    );
-  }),
 
   rest.post(
     `${process.env.REACT_APP_API_URL}user/register`,
@@ -63,12 +53,5 @@ export const handlers = [
 
   rest.post(`${process.env.REACT_APP_API_URL}user/login`, (req, res, ctx) => {
     return res(ctx.status(201), ctx.json("token"));
-  }),
-
-  rest.put(`${process.env.REACT_APP_API_URL}movies/3`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({ movie: {}, message: "successfully" })
-    );
   }),
 ];

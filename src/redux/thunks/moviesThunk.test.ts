@@ -1,10 +1,4 @@
-import {
-  addLocalMovieThunk,
-  deleteLocalMovieThunk,
-  // deleteLocalMovieThunk,
-  loadLocalMoviesThunk,
-  updateLocalMovieThunk,
-} from "./moviesThunk";
+import { deleteLocalMovieThunk, loadLocalMoviesThunk } from "./moviesThunk";
 
 describe("Given a loadLocalMoviesThunk function", () => {
   describe("When it is called", () => {
@@ -48,65 +42,6 @@ describe("Given a deleteLocalMovieThunk function", () => {
       await innerThunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
-    });
-  });
-});
-
-describe("Given an addLocalMovieThunk function", () => {
-  describe("When it is called with a movie", () => {
-    test.only("Then it should dispatch a function", async () => {
-      JSON.parse = jest
-        .fn()
-        .mockImplementationOnce(() => ({ token: "akljdgdklsaj;" }));
-      const file = new File(["hello"], "hello.png", { type: "image/png" });
-      const movie = {
-        Title: "Adeu",
-        Actors: "protagonist supporting character",
-        Director: "movie director",
-        Genre: "drama",
-        Plot: "summary of the movie",
-        Poster: file,
-        Runtime: "120",
-        Type: "movie",
-        Writer: "movie writers",
-        Year: "1999",
-        // _id: "2",
-      };
-      const dispatch = jest.fn();
-
-      const innerThunk = await addLocalMovieThunk(movie);
-      await innerThunk(dispatch);
-
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
-});
-
-describe("Given an updateLocalMovieThunk function", () => {
-  describe("When it is called with a movie and an id", () => {
-    test("Then it should dispatch a function", async () => {
-      JSON.parse = jest
-        .fn()
-        .mockImplementationOnce(() => ({ token: "akljdgdklsaj;" }));
-      const movie = {
-        Title: "Adeu",
-        Actors: "protagonist supporting character",
-        Director: "movie director",
-        Genre: "drama",
-        Plot: "summary of the movie",
-        Poster:
-          "https://m.media-amazon.com/images/M/MV5BNTE3MDc1MjY4NV5BMl5BanBnXkFtZT...",
-        Runtime: "120",
-        Type: "movie",
-        Writer: "movie writers",
-        Year: "1999",
-      };
-      const dispatch = jest.fn();
-
-      const innerThunk = await updateLocalMovieThunk(movie, "3");
-      await innerThunk(dispatch);
-
-      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
