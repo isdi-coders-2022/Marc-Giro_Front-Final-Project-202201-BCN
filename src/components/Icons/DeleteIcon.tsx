@@ -5,7 +5,12 @@ import React from "react";
 const DeleteIcon = ({ onClick }: { onClick?: React.MouseEventHandler }) => {
   return (
     <>
-      <FontAwesomeIcon role="img" icon={faTrash} onClick={onClick} />
+      <FontAwesomeIcon
+        title="trash"
+        role="img"
+        icon={faTrash}
+        onClick={onClick}
+      />
     </>
   );
 };
