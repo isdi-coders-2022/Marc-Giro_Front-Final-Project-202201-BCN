@@ -56,7 +56,7 @@ describe("Given a delete local movie action", () => {
 describe("Given an add local movie action", () => {
   describe("When it receives a movie", () => {
     test("Then it should return the action and the movie", () => {
-      const movie: Movie = {
+      const movie: any = {
         Title: "The Leftovers",
         Year: "2014–2017",
         Type: "series",
@@ -78,7 +78,7 @@ describe("Given an add local movie action", () => {
 describe("Given an update local movie action", () => {
   describe("When it receives a movie", () => {
     test("Then it should return the action and the movie", () => {
-      const movie: Movie = {
+      const movie: any = {
         Title: "The Leftovers",
         Year: "2014–2017",
         Type: "series",

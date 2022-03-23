@@ -22,7 +22,7 @@ export const loadLocalMoviesThunk =
   async (
     dispatch: ThunkDispatch<void, unknown, LoadLocalMoviesActionInterface>
   ) => {
-    const response = await fetch(`${url}movies/?s=${search}`);
+    const response = await fetch(`${url}movies`);
     const moviesList = await response.json();
 
     dispatch(loadLocalMoviesAction(moviesList));
@@ -81,9 +81,10 @@ export const addLocalMovieThunk =
         authorization: JSON.parse(localStorage.userToken).token,
       },
     });
+    debugger;
     const responseCreateMovie = await response.json();
 
-    if (responseCreateMovie.message === "Movie created") {
+    if (response.ok) {
       dispatch(addLocalMovieAction(responseCreateMovie.movie));
     }
   };
