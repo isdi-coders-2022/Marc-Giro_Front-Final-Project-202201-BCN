@@ -22,7 +22,7 @@ export const loadLocalMoviesThunk =
   async (
     dispatch: ThunkDispatch<void, unknown, LoadLocalMoviesActionInterface>
   ) => {
-    const response = await fetch(`${url}movies/?s=${search}`);
+    const response = await fetch(`${url}movies`);
     const moviesList = await response.json();
 
     dispatch(loadLocalMoviesAction(moviesList));
@@ -74,6 +74,13 @@ export const addLocalMovieThunk =
     data.append("Plot", movie.Plot);
     data.append("Poster", movie.Poster);
 
+    console.log("MOVIE");
+    console.log(movie);
+
+    console.log("DATA");
+    for (var pair of data.entries()) {
+      console.log(pair[0] + ":" + pair[1]);
+    }
     const response = await fetch(`${url}movies`, {
       method: "POST",
       body: data,
@@ -81,9 +88,11 @@ export const addLocalMovieThunk =
         authorization: JSON.parse(localStorage.userToken).token,
       },
     });
+    console.log(response);
     const responseCreateMovie = await response.json();
+    console.log(responseCreateMovie, "RESPONSE CREATE MOVIE");
 
-    if (responseCreateMovie.message === "Movie created") {
+    if (response.ok) {
       dispatch(addLocalMovieAction(responseCreateMovie.movie));
     }
   };
