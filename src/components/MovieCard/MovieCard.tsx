@@ -117,7 +117,7 @@ export const MovieCard = ({
               <FontAwesomeIcon icon={faBookmark} />
             </i>
 
-            <i>
+            <i role="button">
               <DeleteIcon
                 onClick={() => {
                   deleteMovie(_id);

@@ -40,9 +40,8 @@ export const deleteLocalMovieThunk =
           .token,
       },
     });
-    const responseMessage = await response.json();
 
-    if (responseMessage.message === "Movie deleted") {
+    if (response.ok) {
       dispatch(deleteLocalMovieAction(movieId));
     }
   };
